@@ -28,6 +28,7 @@ Partial Class LoginScreen
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.LabelUsername = New System.Windows.Forms.Label()
         Me.LabelPassword = New System.Windows.Forms.Label()
+        Me.ButtonSignUp = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ButtonLogin
@@ -71,11 +72,21 @@ Partial Class LoginScreen
         Me.LabelPassword.TabIndex = 4
         Me.LabelPassword.Text = "Password"
         '
+        'ButtonSignUp
+        '
+        Me.ButtonSignUp.Location = New System.Drawing.Point(12, 210)
+        Me.ButtonSignUp.Name = "ButtonSignUp"
+        Me.ButtonSignUp.Size = New System.Drawing.Size(178, 57)
+        Me.ButtonSignUp.TabIndex = 5
+        Me.ButtonSignUp.Text = "Sign Up"
+        Me.ButtonSignUp.UseVisualStyleBackColor = True
+        '
         'LoginScreen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(206, 222)
+        Me.ClientSize = New System.Drawing.Size(206, 277)
+        Me.Controls.Add(Me.ButtonSignUp)
         Me.Controls.Add(Me.LabelPassword)
         Me.Controls.Add(Me.LabelUsername)
         Me.Controls.Add(Me.TextBox2)
@@ -94,4 +105,5 @@ Partial Class LoginScreen
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents LabelUsername As Label
     Friend WithEvents LabelPassword As Label
+    Friend WithEvents ButtonSignUp As Button
 End Class
