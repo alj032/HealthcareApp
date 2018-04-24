@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEvent.Designer.vb">
+      <DependentUpon>AddEvent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddEvent.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="db.vb" />
     <Compile Include="UserSignUp.Designer.vb">
@@ -116,6 +122,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddEvent.resx">
+      <DependentUpon>AddEvent.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginScreen.resx">
       <DependentUpon>LoginScreen.vb</DependentUpon>
     </EmbeddedResource>

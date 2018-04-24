@@ -22,7 +22,6 @@ Partial Class MainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
@@ -63,9 +62,11 @@ Partial Class MainForm
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ButtonSignUp = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewEvents = New System.Windows.Forms.DataGridView()
         Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.MonthCalendar3 = New System.Windows.Forms.MonthCalendar()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.DataGridView4 = New System.Windows.Forms.DataGridView()
         Me.DataGridView5 = New System.Windows.Forms.DataGridView()
@@ -81,48 +82,36 @@ Partial Class MainForm
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.DataGridViewSteps = New System.Windows.Forms.DataGridView()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.RadioButton9 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton8 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton7 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton6 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton5 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
-        Me.DataGridView14 = New System.Windows.Forms.DataGridView()
-        Me.Label20 = New System.Windows.Forms.Label()
+        Me.ButtonAllDays = New System.Windows.Forms.Button()
+        Me.ButtonLastDay = New System.Windows.Forms.Button()
+        Me.ButtonLast30Days = New System.Windows.Forms.Button()
         Me.Label25 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.TextBoxTargetDistance = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TextBoxTargetCalories = New System.Windows.Forms.TextBox()
         Me.Label27 = New System.Windows.Forms.Label()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.TextBoxTargetSteps = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBoxActualDistance = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TextBoxActualCalories = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Chart4 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.SleepdataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.XanaduDataSet = New HealthCareApplication.XanaduDataSet()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBoxActualSteps = New System.Windows.Forms.TextBox()
         Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.Chart5 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
-        Me.SleepdataTableAdapter = New HealthCareApplication.XanaduDataSetTableAdapters.sleepdataTableAdapter()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.ButtonAddEvent = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.MonthCalendar3 = New System.Windows.Forms.MonthCalendar()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.TabControlHomepage.SuspendLayout()
         Me.TabPageDashboard.SuspendLayout()
         CType(Me.DataGridView19, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -132,7 +121,7 @@ Partial Class MainForm
         CType(Me.Chart3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageEvents.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewEvents, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage1.SuspendLayout()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -142,15 +131,12 @@ Partial Class MainForm
         CType(Me.DataGridViewAvailableLunch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         CType(Me.DataGridViewSteps, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SleepdataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.XanaduDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControlHomepage
@@ -371,10 +357,11 @@ Partial Class MainForm
         '
         'TabPageEvents
         '
+        Me.TabPageEvents.Controls.Add(Me.ButtonAddEvent)
         Me.TabPageEvents.Controls.Add(Me.Label4)
         Me.TabPageEvents.Controls.Add(Me.TextBox1)
         Me.TabPageEvents.Controls.Add(Me.ButtonSignUp)
-        Me.TabPageEvents.Controls.Add(Me.DataGridView1)
+        Me.TabPageEvents.Controls.Add(Me.DataGridViewEvents)
         Me.TabPageEvents.Controls.Add(Me.MonthCalendar1)
         Me.TabPageEvents.Location = New System.Drawing.Point(4, 22)
         Me.TabPageEvents.Name = "TabPageEvents"
@@ -388,7 +375,7 @@ Partial Class MainForm
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(46, 206)
+        Me.Label4.Location = New System.Drawing.Point(46, 265)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(187, 25)
         Me.Label4.TabIndex = 4
@@ -396,7 +383,7 @@ Partial Class MainForm
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(51, 243)
+        Me.TextBox1.Location = New System.Drawing.Point(51, 293)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(310, 307)
@@ -411,26 +398,24 @@ Partial Class MainForm
         Me.ButtonSignUp.Text = "Register For Event"
         Me.ButtonSignUp.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'DataGridViewEvents
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(545, 246)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(813, 307)
-        Me.DataGridView1.TabIndex = 1
+        Me.DataGridViewEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewEvents.Location = New System.Drawing.Point(545, 293)
+        Me.DataGridViewEvents.Name = "DataGridViewEvents"
+        Me.DataGridViewEvents.Size = New System.Drawing.Size(813, 307)
+        Me.DataGridViewEvents.TabIndex = 1
         '
         'MonthCalendar1
         '
-        Me.MonthCalendar1.Location = New System.Drawing.Point(1131, 12)
+        Me.MonthCalendar1.CalendarDimensions = New System.Drawing.Size(4, 1)
+        Me.MonthCalendar1.Location = New System.Drawing.Point(448, 12)
         Me.MonthCalendar1.Name = "MonthCalendar1"
         Me.MonthCalendar1.TabIndex = 0
         '
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.MonthCalendar3)
-        Me.TabPage1.Controls.Add(Me.Button7)
-        Me.TabPage1.Controls.Add(Me.Button6)
-        Me.TabPage1.Controls.Add(Me.Button5)
         Me.TabPage1.Controls.Add(Me.Button4)
         Me.TabPage1.Controls.Add(Me.DataGridView3)
         Me.TabPage1.Controls.Add(Me.DataGridView4)
@@ -444,6 +429,9 @@ Partial Class MainForm
         Me.TabPage1.Controls.Add(Me.DataGridViewAvailableDinner)
         Me.TabPage1.Controls.Add(Me.DataGridViewAvailableLunch)
         Me.TabPage1.Controls.Add(Me.Label6)
+        Me.TabPage1.Controls.Add(Me.Button7)
+        Me.TabPage1.Controls.Add(Me.Button6)
+        Me.TabPage1.Controls.Add(Me.Button5)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -451,6 +439,21 @@ Partial Class MainForm
         Me.TabPage1.TabIndex = 2
         Me.TabPage1.Text = "Diet Plan"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'MonthCalendar3
+        '
+        Me.MonthCalendar3.Location = New System.Drawing.Point(1062, 88)
+        Me.MonthCalendar3.Name = "MonthCalendar3"
+        Me.MonthCalendar3.TabIndex = 38
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(1078, 262)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(201, 55)
+        Me.Button4.TabIndex = 34
+        Me.Button4.Text = "Add A Meal"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'DataGridView3
         '
@@ -564,32 +567,24 @@ Partial Class MainForm
         '
         Me.TabPage2.Controls.Add(Me.Label35)
         Me.TabPage2.Controls.Add(Me.DataGridViewSteps)
-        Me.TabPage2.Controls.Add(Me.Button3)
-        Me.TabPage2.Controls.Add(Me.Button1)
-        Me.TabPage2.Controls.Add(Me.Button2)
-        Me.TabPage2.Controls.Add(Me.RadioButton9)
-        Me.TabPage2.Controls.Add(Me.RadioButton8)
-        Me.TabPage2.Controls.Add(Me.RadioButton7)
-        Me.TabPage2.Controls.Add(Me.RadioButton6)
-        Me.TabPage2.Controls.Add(Me.RadioButton5)
-        Me.TabPage2.Controls.Add(Me.RadioButton4)
-        Me.TabPage2.Controls.Add(Me.DataGridView14)
-        Me.TabPage2.Controls.Add(Me.Label20)
+        Me.TabPage2.Controls.Add(Me.ButtonAllDays)
+        Me.TabPage2.Controls.Add(Me.ButtonLastDay)
+        Me.TabPage2.Controls.Add(Me.ButtonLast30Days)
         Me.TabPage2.Controls.Add(Me.Label25)
-        Me.TabPage2.Controls.Add(Me.TextBox6)
+        Me.TabPage2.Controls.Add(Me.TextBoxTargetDistance)
         Me.TabPage2.Controls.Add(Me.Label26)
-        Me.TabPage2.Controls.Add(Me.TextBox7)
+        Me.TabPage2.Controls.Add(Me.TextBoxTargetCalories)
         Me.TabPage2.Controls.Add(Me.Label27)
-        Me.TabPage2.Controls.Add(Me.TextBox8)
+        Me.TabPage2.Controls.Add(Me.TextBoxTargetSteps)
         Me.TabPage2.Controls.Add(Me.Label24)
-        Me.TabPage2.Controls.Add(Me.TextBox5)
+        Me.TabPage2.Controls.Add(Me.TextBoxActualDistance)
         Me.TabPage2.Controls.Add(Me.Label23)
-        Me.TabPage2.Controls.Add(Me.TextBox4)
+        Me.TabPage2.Controls.Add(Me.TextBoxActualCalories)
         Me.TabPage2.Controls.Add(Me.Label22)
         Me.TabPage2.Controls.Add(Me.Chart4)
         Me.TabPage2.Controls.Add(Me.Label21)
         Me.TabPage2.Controls.Add(Me.Label19)
-        Me.TabPage2.Controls.Add(Me.TextBox2)
+        Me.TabPage2.Controls.Add(Me.TextBoxActualSteps)
         Me.TabPage2.Controls.Add(Me.Chart2)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
@@ -603,7 +598,7 @@ Partial Class MainForm
         '
         Me.Label35.AutoSize = True
         Me.Label35.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label35.Location = New System.Drawing.Point(6, 287)
+        Me.Label35.Location = New System.Drawing.Point(143, 287)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(136, 25)
         Me.Label35.TabIndex = 54
@@ -614,119 +609,35 @@ Partial Class MainForm
         Me.DataGridViewSteps.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewSteps.Location = New System.Drawing.Point(8, 315)
         Me.DataGridViewSteps.Name = "DataGridViewSteps"
-        Me.DataGridViewSteps.Size = New System.Drawing.Size(889, 181)
+        Me.DataGridViewSteps.Size = New System.Drawing.Size(889, 373)
         Me.DataGridViewSteps.TabIndex = 53
         '
-        'Button3
+        'ButtonAllDays
         '
-        Me.Button3.Location = New System.Drawing.Point(444, 283)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(127, 26)
-        Me.Button3.TabIndex = 52
-        Me.Button3.Text = "All Steps"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.ButtonAllDays.Location = New System.Drawing.Point(581, 283)
+        Me.ButtonAllDays.Name = "ButtonAllDays"
+        Me.ButtonAllDays.Size = New System.Drawing.Size(127, 26)
+        Me.ButtonAllDays.TabIndex = 52
+        Me.ButtonAllDays.Text = "All Records"
+        Me.ButtonAllDays.UseVisualStyleBackColor = True
         '
-        'Button1
+        'ButtonLastDay
         '
-        Me.Button1.Location = New System.Drawing.Point(155, 283)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(127, 26)
-        Me.Button1.TabIndex = 51
-        Me.Button1.Text = "Daily Steps"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.ButtonLastDay.Location = New System.Drawing.Point(292, 283)
+        Me.ButtonLastDay.Name = "ButtonLastDay"
+        Me.ButtonLastDay.Size = New System.Drawing.Size(127, 26)
+        Me.ButtonLastDay.TabIndex = 51
+        Me.ButtonLastDay.Text = "Last Recorded Day"
+        Me.ButtonLastDay.UseVisualStyleBackColor = True
         '
-        'Button2
+        'ButtonLast30Days
         '
-        Me.Button2.Location = New System.Drawing.Point(302, 283)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(127, 26)
-        Me.Button2.TabIndex = 49
-        Me.Button2.Text = "Monthly Steps"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'RadioButton9
-        '
-        Me.RadioButton9.AutoSize = True
-        Me.RadioButton9.Location = New System.Drawing.Point(649, 502)
-        Me.RadioButton9.Name = "RadioButton9"
-        Me.RadioButton9.Size = New System.Drawing.Size(92, 17)
-        Me.RadioButton9.TabIndex = 47
-        Me.RadioButton9.TabStop = True
-        Me.RadioButton9.Text = "50 and Above"
-        Me.RadioButton9.UseVisualStyleBackColor = True
-        '
-        'RadioButton8
-        '
-        Me.RadioButton8.AutoSize = True
-        Me.RadioButton8.Location = New System.Drawing.Point(574, 502)
-        Me.RadioButton8.Name = "RadioButton8"
-        Me.RadioButton8.Size = New System.Drawing.Size(69, 17)
-        Me.RadioButton8.TabIndex = 46
-        Me.RadioButton8.TabStop = True
-        Me.RadioButton8.Text = "Under 50"
-        Me.RadioButton8.UseVisualStyleBackColor = True
-        '
-        'RadioButton7
-        '
-        Me.RadioButton7.AutoSize = True
-        Me.RadioButton7.Location = New System.Drawing.Point(499, 502)
-        Me.RadioButton7.Name = "RadioButton7"
-        Me.RadioButton7.Size = New System.Drawing.Size(69, 17)
-        Me.RadioButton7.TabIndex = 45
-        Me.RadioButton7.TabStop = True
-        Me.RadioButton7.Text = "Under 40"
-        Me.RadioButton7.UseVisualStyleBackColor = True
-        '
-        'RadioButton6
-        '
-        Me.RadioButton6.AutoSize = True
-        Me.RadioButton6.Location = New System.Drawing.Point(424, 502)
-        Me.RadioButton6.Name = "RadioButton6"
-        Me.RadioButton6.Size = New System.Drawing.Size(69, 17)
-        Me.RadioButton6.TabIndex = 44
-        Me.RadioButton6.TabStop = True
-        Me.RadioButton6.Text = "Under 30"
-        Me.RadioButton6.UseVisualStyleBackColor = True
-        '
-        'RadioButton5
-        '
-        Me.RadioButton5.AutoSize = True
-        Me.RadioButton5.Location = New System.Drawing.Point(359, 502)
-        Me.RadioButton5.Name = "RadioButton5"
-        Me.RadioButton5.Size = New System.Drawing.Size(59, 17)
-        Me.RadioButton5.TabIndex = 43
-        Me.RadioButton5.TabStop = True
-        Me.RadioButton5.Text = "Female"
-        Me.RadioButton5.UseVisualStyleBackColor = True
-        '
-        'RadioButton4
-        '
-        Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Location = New System.Drawing.Point(305, 502)
-        Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(48, 17)
-        Me.RadioButton4.TabIndex = 42
-        Me.RadioButton4.TabStop = True
-        Me.RadioButton4.Text = "Male"
-        Me.RadioButton4.UseVisualStyleBackColor = True
-        '
-        'DataGridView14
-        '
-        Me.DataGridView14.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView14.Location = New System.Drawing.Point(8, 527)
-        Me.DataGridView14.Name = "DataGridView14"
-        Me.DataGridView14.Size = New System.Drawing.Size(889, 161)
-        Me.DataGridView14.TabIndex = 41
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(6, 499)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(295, 25)
-        Me.Label20.TabIndex = 40
-        Me.Label20.Text = "See what others are doing:"
+        Me.ButtonLast30Days.Location = New System.Drawing.Point(439, 283)
+        Me.ButtonLast30Days.Name = "ButtonLast30Days"
+        Me.ButtonLast30Days.Size = New System.Drawing.Size(127, 26)
+        Me.ButtonLast30Days.TabIndex = 49
+        Me.ButtonLast30Days.Text = "Last 30 Records"
+        Me.ButtonLast30Days.UseVisualStyleBackColor = True
         '
         'Label25
         '
@@ -738,12 +649,12 @@ Partial Class MainForm
         Me.Label25.TabIndex = 39
         Me.Label25.Text = "Target Distance Walked"
         '
-        'TextBox6
+        'TextBoxTargetDistance
         '
-        Me.TextBox6.Location = New System.Drawing.Point(793, 180)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(117, 20)
-        Me.TextBox6.TabIndex = 38
+        Me.TextBoxTargetDistance.Location = New System.Drawing.Point(793, 180)
+        Me.TextBoxTargetDistance.Name = "TextBoxTargetDistance"
+        Me.TextBoxTargetDistance.Size = New System.Drawing.Size(117, 20)
+        Me.TextBoxTargetDistance.TabIndex = 38
         '
         'Label26
         '
@@ -755,12 +666,12 @@ Partial Class MainForm
         Me.Label26.TabIndex = 37
         Me.Label26.Text = "Target Calories Burnt"
         '
-        'TextBox7
+        'TextBoxTargetCalories
         '
-        Me.TextBox7.Location = New System.Drawing.Point(793, 146)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(117, 20)
-        Me.TextBox7.TabIndex = 36
+        Me.TextBoxTargetCalories.Location = New System.Drawing.Point(793, 146)
+        Me.TextBoxTargetCalories.Name = "TextBoxTargetCalories"
+        Me.TextBoxTargetCalories.Size = New System.Drawing.Size(117, 20)
+        Me.TextBoxTargetCalories.TabIndex = 36
         '
         'Label27
         '
@@ -772,12 +683,12 @@ Partial Class MainForm
         Me.Label27.TabIndex = 35
         Me.Label27.Text = "Target Number of Steps"
         '
-        'TextBox8
+        'TextBoxTargetSteps
         '
-        Me.TextBox8.Location = New System.Drawing.Point(793, 106)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(117, 20)
-        Me.TextBox8.TabIndex = 34
+        Me.TextBoxTargetSteps.Location = New System.Drawing.Point(793, 106)
+        Me.TextBoxTargetSteps.Name = "TextBoxTargetSteps"
+        Me.TextBoxTargetSteps.Size = New System.Drawing.Size(117, 20)
+        Me.TextBoxTargetSteps.TabIndex = 34
         '
         'Label24
         '
@@ -789,12 +700,12 @@ Partial Class MainForm
         Me.Label24.TabIndex = 33
         Me.Label24.Text = "Actual Distance Walked"
         '
-        'TextBox5
+        'TextBoxActualDistance
         '
-        Me.TextBox5.Location = New System.Drawing.Point(302, 180)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(117, 20)
-        Me.TextBox5.TabIndex = 32
+        Me.TextBoxActualDistance.Location = New System.Drawing.Point(302, 180)
+        Me.TextBoxActualDistance.Name = "TextBoxActualDistance"
+        Me.TextBoxActualDistance.Size = New System.Drawing.Size(117, 20)
+        Me.TextBoxActualDistance.TabIndex = 32
         '
         'Label23
         '
@@ -806,12 +717,12 @@ Partial Class MainForm
         Me.Label23.TabIndex = 31
         Me.Label23.Text = "Actual Calories Burnt"
         '
-        'TextBox4
+        'TextBoxActualCalories
         '
-        Me.TextBox4.Location = New System.Drawing.Point(302, 146)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(117, 20)
-        Me.TextBox4.TabIndex = 30
+        Me.TextBoxActualCalories.Location = New System.Drawing.Point(302, 146)
+        Me.TextBoxActualCalories.Name = "TextBoxActualCalories"
+        Me.TextBoxActualCalories.Size = New System.Drawing.Size(117, 20)
+        Me.TextBoxActualCalories.TabIndex = 30
         '
         'Label22
         '
@@ -827,7 +738,6 @@ Partial Class MainForm
         '
         ChartArea3.Name = "ChartArea1"
         Me.Chart4.ChartAreas.Add(ChartArea3)
-        Me.Chart4.DataSource = Me.SleepdataBindingSource
         Legend3.Name = "Legend1"
         Me.Chart4.Legends.Add(Legend3)
         Me.Chart4.Location = New System.Drawing.Point(955, 452)
@@ -839,16 +749,6 @@ Partial Class MainForm
         Me.Chart4.Size = New System.Drawing.Size(416, 236)
         Me.Chart4.TabIndex = 28
         Me.Chart4.Text = "Chart4"
-        '
-        'SleepdataBindingSource
-        '
-        Me.SleepdataBindingSource.DataMember = "sleepdata"
-        Me.SleepdataBindingSource.DataSource = Me.XanaduDataSet
-        '
-        'XanaduDataSet
-        '
-        Me.XanaduDataSet.DataSetName = "XanaduDataSet"
-        Me.XanaduDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label21
         '
@@ -870,18 +770,17 @@ Partial Class MainForm
         Me.Label19.TabIndex = 24
         Me.Label19.Text = "Actual Number of Steps"
         '
-        'TextBox2
+        'TextBoxActualSteps
         '
-        Me.TextBox2.Location = New System.Drawing.Point(302, 106)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(117, 20)
-        Me.TextBox2.TabIndex = 1
+        Me.TextBoxActualSteps.Location = New System.Drawing.Point(302, 106)
+        Me.TextBoxActualSteps.Name = "TextBoxActualSteps"
+        Me.TextBoxActualSteps.Size = New System.Drawing.Size(117, 20)
+        Me.TextBoxActualSteps.TabIndex = 1
         '
         'Chart2
         '
         ChartArea4.Name = "ChartArea1"
         Me.Chart2.ChartAreas.Add(ChartArea4)
-        Me.Chart2.DataSource = Me.SleepdataBindingSource
         Legend4.Name = "Legend1"
         Me.Chart2.Legends.Add(Legend4)
         Me.Chart2.Location = New System.Drawing.Point(955, 185)
@@ -907,6 +806,24 @@ Partial Class MainForm
         Me.TabPage3.TabIndex = 4
         Me.TabPage3.Text = "Sleep Habits"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(37, 337)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(165, 25)
+        Me.Label5.TabIndex = 31
+        Me.Label5.Text = "Dream Journal"
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Location = New System.Drawing.Point(42, 365)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.Size = New System.Drawing.Size(635, 262)
+        Me.DataGridView2.TabIndex = 30
         '
         'Label33
         '
@@ -953,58 +870,16 @@ Partial Class MainForm
         Me.WebBrowser1.Name = "WebBrowser1"
         Me.WebBrowser1.Size = New System.Drawing.Size(1371, 688)
         Me.WebBrowser1.TabIndex = 8
-        Me.WebBrowser1.Url = New System.Uri("https://www.facebook.com/", System.UriKind.Absolute)
+        Me.WebBrowser1.Url = New System.Uri("https://www.facebook.com/Xanadu-Heatlh-434256350353251", System.UriKind.Absolute)
         '
-        'SleepdataTableAdapter
+        'ButtonAddEvent
         '
-        Me.SleepdataTableAdapter.ClearBeforeFill = True
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(42, 365)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(635, 262)
-        Me.DataGridView2.TabIndex = 30
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(37, 337)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(165, 25)
-        Me.Label5.TabIndex = 31
-        Me.Label5.Text = "Dream Journal"
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(1078, 262)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(201, 55)
-        Me.Button4.TabIndex = 34
-        Me.Button4.Text = "Add A Meal"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button5
-        '
-        Me.Button5.BackgroundImage = Global.HealthCareApplication.My.Resources.Resources.Right_Arrow
-        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button5.Location = New System.Drawing.Point(481, 161)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(36, 31)
-        Me.Button5.TabIndex = 35
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.BackgroundImage = Global.HealthCareApplication.My.Resources.Resources.Right_Arrow
-        Me.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button6.Location = New System.Drawing.Point(481, 358)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(36, 31)
-        Me.Button6.TabIndex = 36
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.ButtonAddEvent.Location = New System.Drawing.Point(465, 186)
+        Me.ButtonAddEvent.Name = "ButtonAddEvent"
+        Me.ButtonAddEvent.Size = New System.Drawing.Size(119, 40)
+        Me.ButtonAddEvent.TabIndex = 5
+        Me.ButtonAddEvent.Text = "AddEvent"
+        Me.ButtonAddEvent.UseVisualStyleBackColor = True
         '
         'Button7
         '
@@ -1016,11 +891,25 @@ Partial Class MainForm
         Me.Button7.TabIndex = 37
         Me.Button7.UseVisualStyleBackColor = True
         '
-        'MonthCalendar3
+        'Button6
         '
-        Me.MonthCalendar3.Location = New System.Drawing.Point(1062, 88)
-        Me.MonthCalendar3.Name = "MonthCalendar3"
-        Me.MonthCalendar3.TabIndex = 38
+        Me.Button6.BackgroundImage = Global.HealthCareApplication.My.Resources.Resources.Right_Arrow
+        Me.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button6.Location = New System.Drawing.Point(481, 358)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(36, 31)
+        Me.Button6.TabIndex = 36
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.BackgroundImage = Global.HealthCareApplication.My.Resources.Resources.Right_Arrow
+        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button5.Location = New System.Drawing.Point(481, 161)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(36, 31)
+        Me.Button5.TabIndex = 35
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'MainForm
         '
@@ -1042,7 +931,7 @@ Partial Class MainForm
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageEvents.ResumeLayout(False)
         Me.TabPageEvents.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewEvents, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1054,16 +943,13 @@ Partial Class MainForm
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
         CType(Me.DataGridViewSteps, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Chart4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SleepdataBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.XanaduDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Chart5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1084,7 +970,7 @@ Partial Class MainForm
     Friend WithEvents Label4 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents ButtonSignUp As Button
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DataGridViewEvents As DataGridView
     Friend WithEvents MonthCalendar1 As MonthCalendar
     Friend WithEvents Chart2 As DataVisualization.Charting.Chart
     Friend WithEvents Label32 As Label
@@ -1108,43 +994,32 @@ Partial Class MainForm
     Friend WithEvents DataGridViewAvailableDinner As DataGridView
     Friend WithEvents DataGridViewAvailableLunch As DataGridView
     Friend WithEvents Label6 As Label
-    Friend WithEvents RadioButton9 As RadioButton
-    Friend WithEvents RadioButton8 As RadioButton
-    Friend WithEvents RadioButton7 As RadioButton
-    Friend WithEvents RadioButton6 As RadioButton
-    Friend WithEvents RadioButton5 As RadioButton
-    Friend WithEvents RadioButton4 As RadioButton
-    Friend WithEvents DataGridView14 As DataGridView
-    Friend WithEvents Label20 As Label
     Friend WithEvents Label25 As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TextBoxTargetDistance As TextBox
     Friend WithEvents Label26 As Label
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents TextBoxTargetCalories As TextBox
     Friend WithEvents Label27 As Label
-    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents TextBoxTargetSteps As TextBox
     Friend WithEvents Label24 As Label
-    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBoxActualDistance As TextBox
     Friend WithEvents Label23 As Label
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TextBoxActualCalories As TextBox
     Friend WithEvents Label22 As Label
     Friend WithEvents Chart4 As DataVisualization.Charting.Chart
     Friend WithEvents Label21 As Label
     Friend WithEvents Label19 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBoxActualSteps As TextBox
     Friend WithEvents Label33 As Label
     Friend WithEvents Chart5 As DataVisualization.Charting.Chart
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents ButtonAllDays As Button
+    Friend WithEvents ButtonLastDay As Button
+    Friend WithEvents ButtonLast30Days As Button
     Friend WithEvents Label35 As Label
     Friend WithEvents DataGridViewSteps As DataGridView
     Friend WithEvents DataGridView3 As DataGridView
     Friend WithEvents DataGridView4 As DataGridView
     Friend WithEvents DataGridView5 As DataGridView
     Friend WithEvents DataGridViewAvailableBreakfast As DataGridView
-    Friend WithEvents XanaduDataSet As XanaduDataSet
-    Friend WithEvents SleepdataBindingSource As BindingSource
-    Friend WithEvents SleepdataTableAdapter As XanaduDataSetTableAdapters.sleepdataTableAdapter
     Friend WithEvents Label5 As Label
     Friend WithEvents DataGridView2 As DataGridView
     Friend WithEvents Button5 As Button
@@ -1152,4 +1027,5 @@ Partial Class MainForm
     Friend WithEvents Button7 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents MonthCalendar3 As MonthCalendar
+    Friend WithEvents ButtonAddEvent As Button
 End Class
