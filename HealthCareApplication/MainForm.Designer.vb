@@ -107,11 +107,14 @@ Partial Class MainForm
         Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewSleepStats = New System.Windows.Forms.DataGridView()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.Chart5 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
+        Me.ButtonLastSleepDay = New System.Windows.Forms.Button()
+        Me.ButtonLast30 = New System.Windows.Forms.Button()
+        Me.ButtonAllRecords = New System.Windows.Forms.Button()
         Me.TabControlHomepage.SuspendLayout()
         Me.TabPageDashboard.SuspendLayout()
         CType(Me.DataGridViewEventRegister, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -134,7 +137,7 @@ Partial Class MainForm
         CType(Me.Chart4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewSleepStats, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
         Me.SuspendLayout()
@@ -176,7 +179,7 @@ Partial Class MainForm
         Me.TabPageDashboard.Location = New System.Drawing.Point(4, 22)
         Me.TabPageDashboard.Name = "TabPageDashboard"
         Me.TabPageDashboard.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageDashboard.Size = New System.Drawing.Size(1377, 694)
+        Me.TabPageDashboard.Size = New System.Drawing.Size(938, 602)
         Me.TabPageDashboard.TabIndex = 0
         Me.TabPageDashboard.Text = "Dashboard"
         Me.TabPageDashboard.UseVisualStyleBackColor = True
@@ -366,7 +369,7 @@ Partial Class MainForm
         Me.TabPageEvents.Location = New System.Drawing.Point(4, 22)
         Me.TabPageEvents.Name = "TabPageEvents"
         Me.TabPageEvents.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageEvents.Size = New System.Drawing.Size(1377, 694)
+        Me.TabPageEvents.Size = New System.Drawing.Size(938, 602)
         Me.TabPageEvents.TabIndex = 1
         Me.TabPageEvents.Text = "Upcoming Events"
         Me.TabPageEvents.UseVisualStyleBackColor = True
@@ -444,7 +447,7 @@ Partial Class MainForm
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1377, 694)
+        Me.TabPage1.Size = New System.Drawing.Size(938, 602)
         Me.TabPage1.TabIndex = 2
         Me.TabPage1.Text = "Diet Plan"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -834,8 +837,11 @@ Partial Class MainForm
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.ButtonAllRecords)
+        Me.TabPage3.Controls.Add(Me.ButtonLast30)
+        Me.TabPage3.Controls.Add(Me.ButtonLastSleepDay)
         Me.TabPage3.Controls.Add(Me.Label5)
-        Me.TabPage3.Controls.Add(Me.DataGridView2)
+        Me.TabPage3.Controls.Add(Me.DataGridViewSleepStats)
         Me.TabPage3.Controls.Add(Me.Label33)
         Me.TabPage3.Controls.Add(Me.Chart5)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
@@ -850,25 +856,25 @@ Partial Class MainForm
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(37, 337)
+        Me.Label5.Location = New System.Drawing.Point(1, 178)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(165, 25)
+        Me.Label5.Size = New System.Drawing.Size(133, 25)
         Me.Label5.TabIndex = 31
-        Me.Label5.Text = "Dream Journal"
+        Me.Label5.Text = "Sleep Stats"
         '
-        'DataGridView2
+        'DataGridViewSleepStats
         '
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(42, 365)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(635, 262)
-        Me.DataGridView2.TabIndex = 30
+        Me.DataGridViewSleepStats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewSleepStats.Location = New System.Drawing.Point(6, 206)
+        Me.DataGridViewSleepStats.Name = "DataGridViewSleepStats"
+        Me.DataGridViewSleepStats.Size = New System.Drawing.Size(635, 262)
+        Me.DataGridViewSleepStats.TabIndex = 30
         '
         'Label33
         '
         Me.Label33.AutoSize = True
         Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.Location = New System.Drawing.Point(950, 424)
+        Me.Label33.Location = New System.Drawing.Point(950, 178)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(262, 25)
         Me.Label33.TabIndex = 29
@@ -880,7 +886,7 @@ Partial Class MainForm
         Me.Chart5.ChartAreas.Add(ChartArea5)
         Legend5.Name = "Legend1"
         Me.Chart5.Legends.Add(Legend5)
-        Me.Chart5.Location = New System.Drawing.Point(955, 452)
+        Me.Chart5.Location = New System.Drawing.Point(955, 206)
         Me.Chart5.Name = "Chart5"
         Series5.ChartArea = "ChartArea1"
         Series5.Legend = "Legend1"
@@ -910,6 +916,33 @@ Partial Class MainForm
         Me.WebBrowser1.Size = New System.Drawing.Size(1371, 688)
         Me.WebBrowser1.TabIndex = 8
         Me.WebBrowser1.Url = New System.Uri("https://www.facebook.com/Xanadu-Heatlh-434256350353251", System.UriKind.Absolute)
+        '
+        'ButtonLastSleepDay
+        '
+        Me.ButtonLastSleepDay.Location = New System.Drawing.Point(6, 474)
+        Me.ButtonLastSleepDay.Name = "ButtonLastSleepDay"
+        Me.ButtonLastSleepDay.Size = New System.Drawing.Size(128, 46)
+        Me.ButtonLastSleepDay.TabIndex = 32
+        Me.ButtonLastSleepDay.Text = "Last Recorded Day"
+        Me.ButtonLastSleepDay.UseVisualStyleBackColor = True
+        '
+        'ButtonLast30
+        '
+        Me.ButtonLast30.Location = New System.Drawing.Point(140, 474)
+        Me.ButtonLast30.Name = "ButtonLast30"
+        Me.ButtonLast30.Size = New System.Drawing.Size(128, 46)
+        Me.ButtonLast30.TabIndex = 33
+        Me.ButtonLast30.Text = "Last 30 Days"
+        Me.ButtonLast30.UseVisualStyleBackColor = True
+        '
+        'ButtonAllRecords
+        '
+        Me.ButtonAllRecords.Location = New System.Drawing.Point(274, 474)
+        Me.ButtonAllRecords.Name = "ButtonAllRecords"
+        Me.ButtonAllRecords.Size = New System.Drawing.Size(128, 46)
+        Me.ButtonAllRecords.TabIndex = 34
+        Me.ButtonAllRecords.Text = "All Records"
+        Me.ButtonAllRecords.UseVisualStyleBackColor = True
         '
         'MainForm
         '
@@ -947,7 +980,7 @@ Partial Class MainForm
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewSleepStats, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Chart5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -1021,11 +1054,14 @@ Partial Class MainForm
     Friend WithEvents DataGridView5 As DataGridView
     Friend WithEvents DataGridViewAvailableBreakfast As DataGridView
     Friend WithEvents Label5 As Label
-    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents DataGridViewSleepStats As DataGridView
     Friend WithEvents Button5 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents MonthCalendar3 As MonthCalendar
     Friend WithEvents ButtonAddEvent As Button
+    Friend WithEvents ButtonAllRecords As Button
+    Friend WithEvents ButtonLast30 As Button
+    Friend WithEvents ButtonLastSleepDay As Button
 End Class
