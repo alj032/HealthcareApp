@@ -1,5 +1,9 @@
 ﻿Imports System.Data.SqlClient
 Public Class LoginScreen
+    ''Place to store the #USERID we will use this in the next form to retrieve information about the user 
+    Public UserID As Int16
+    Public Username As String
+
     Private Sub ButtonSignUp_Click(sender As Object, e As EventArgs) Handles ButtonSignUp.Click
         UserSignUp.Show()
     End Sub
@@ -18,6 +22,9 @@ Public Class LoginScreen
         If table.Rows.Count() <= 0 Then
             MsgBox("Credentials don't match!", MsgBoxStyle.OkOnly, "Error!")
         Else
+            Username = TextBox1.Text
+            UserID = table.Rows.Item(0).Item("ID")
+            MessageBox.Show(UserID)
             MainForm.Show()
             Me.Close()
         End If
