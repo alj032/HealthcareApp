@@ -59,6 +59,8 @@ Partial Class MainForm
         Me.Chart3 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TabPageEvents = New System.Windows.Forms.TabPage()
+        Me.eventtextbox = New System.Windows.Forms.TextBox()
+        Me.usertextbox = New System.Windows.Forms.TextBox()
         Me.ButtonAddEvent = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -112,11 +114,9 @@ Partial Class MainForm
         Me.Label5 = New System.Windows.Forms.Label()
         Me.DataGridViewSleepStats = New System.Windows.Forms.DataGridView()
         Me.Label33 = New System.Windows.Forms.Label()
-        Me.Chart5 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.ChartAverageSleep = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
-        Me.usertextbox = New System.Windows.Forms.TextBox()
-        Me.eventtextbox = New System.Windows.Forms.TextBox()
         Me.TabControlHomepage.SuspendLayout()
         Me.TabPageDashboard.SuspendLayout()
         CType(Me.DataGridViewEventRegister, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -140,7 +140,7 @@ Partial Class MainForm
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
         CType(Me.DataGridViewSleepStats, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Chart5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ChartAverageSleep, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -377,6 +377,20 @@ Partial Class MainForm
         Me.TabPageEvents.TabIndex = 1
         Me.TabPageEvents.Text = "Upcoming Events"
         Me.TabPageEvents.UseVisualStyleBackColor = True
+        '
+        'eventtextbox
+        '
+        Me.eventtextbox.Location = New System.Drawing.Point(621, 578)
+        Me.eventtextbox.Name = "eventtextbox"
+        Me.eventtextbox.Size = New System.Drawing.Size(100, 20)
+        Me.eventtextbox.TabIndex = 7
+        '
+        'usertextbox
+        '
+        Me.usertextbox.Location = New System.Drawing.Point(474, 579)
+        Me.usertextbox.Name = "usertextbox"
+        Me.usertextbox.Size = New System.Drawing.Size(100, 20)
+        Me.usertextbox.TabIndex = 6
         '
         'ButtonAddEvent
         '
@@ -635,7 +649,7 @@ Partial Class MainForm
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1377, 694)
+        Me.TabPage2.Size = New System.Drawing.Size(1088, 434)
         Me.TabPage2.TabIndex = 3
         Me.TabPage2.Text = "Step Counter"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -847,7 +861,7 @@ Partial Class MainForm
         Me.TabPage3.Controls.Add(Me.Label5)
         Me.TabPage3.Controls.Add(Me.DataGridViewSleepStats)
         Me.TabPage3.Controls.Add(Me.Label33)
-        Me.TabPage3.Controls.Add(Me.Chart5)
+        Me.TabPage3.Controls.Add(Me.ChartAverageSleep)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
@@ -858,7 +872,7 @@ Partial Class MainForm
         '
         'ButtonAllRecords
         '
-        Me.ButtonAllRecords.Location = New System.Drawing.Point(274, 474)
+        Me.ButtonAllRecords.Location = New System.Drawing.Point(408, 154)
         Me.ButtonAllRecords.Name = "ButtonAllRecords"
         Me.ButtonAllRecords.Size = New System.Drawing.Size(128, 46)
         Me.ButtonAllRecords.TabIndex = 34
@@ -867,7 +881,7 @@ Partial Class MainForm
         '
         'ButtonLast30
         '
-        Me.ButtonLast30.Location = New System.Drawing.Point(140, 474)
+        Me.ButtonLast30.Location = New System.Drawing.Point(274, 154)
         Me.ButtonLast30.Name = "ButtonLast30"
         Me.ButtonLast30.Size = New System.Drawing.Size(128, 46)
         Me.ButtonLast30.TabIndex = 33
@@ -876,7 +890,7 @@ Partial Class MainForm
         '
         'ButtonLastSleepDay
         '
-        Me.ButtonLastSleepDay.Location = New System.Drawing.Point(6, 474)
+        Me.ButtonLastSleepDay.Location = New System.Drawing.Point(140, 154)
         Me.ButtonLastSleepDay.Name = "ButtonLastSleepDay"
         Me.ButtonLastSleepDay.Size = New System.Drawing.Size(128, 46)
         Me.ButtonLastSleepDay.TabIndex = 32
@@ -911,21 +925,21 @@ Partial Class MainForm
         Me.Label33.TabIndex = 29
         Me.Label33.Text = "Average Hours of Sleep"
         '
-        'Chart5
+        'ChartAverageSleep
         '
         ChartArea5.Name = "ChartArea1"
-        Me.Chart5.ChartAreas.Add(ChartArea5)
+        Me.ChartAverageSleep.ChartAreas.Add(ChartArea5)
         Legend5.Name = "Legend1"
-        Me.Chart5.Legends.Add(Legend5)
-        Me.Chart5.Location = New System.Drawing.Point(955, 206)
-        Me.Chart5.Name = "Chart5"
+        Me.ChartAverageSleep.Legends.Add(Legend5)
+        Me.ChartAverageSleep.Location = New System.Drawing.Point(955, 206)
+        Me.ChartAverageSleep.Name = "ChartAverageSleep"
         Series5.ChartArea = "ChartArea1"
         Series5.Legend = "Legend1"
         Series5.Name = "Series1"
-        Me.Chart5.Series.Add(Series5)
-        Me.Chart5.Size = New System.Drawing.Size(416, 236)
-        Me.Chart5.TabIndex = 28
-        Me.Chart5.Text = "Chart5"
+        Me.ChartAverageSleep.Series.Add(Series5)
+        Me.ChartAverageSleep.Size = New System.Drawing.Size(416, 236)
+        Me.ChartAverageSleep.TabIndex = 28
+        Me.ChartAverageSleep.Text = "Chart5"
         '
         'TabPage4
         '
@@ -947,20 +961,6 @@ Partial Class MainForm
         Me.WebBrowser1.Size = New System.Drawing.Size(1371, 688)
         Me.WebBrowser1.TabIndex = 8
         Me.WebBrowser1.Url = New System.Uri("https://www.facebook.com/Xanadu-Heatlh-434256350353251", System.UriKind.Absolute)
-        '
-        'usertextbox
-        '
-        Me.usertextbox.Location = New System.Drawing.Point(474, 579)
-        Me.usertextbox.Name = "usertextbox"
-        Me.usertextbox.Size = New System.Drawing.Size(100, 20)
-        Me.usertextbox.TabIndex = 6
-        '
-        'eventtextbox
-        '
-        Me.eventtextbox.Location = New System.Drawing.Point(621, 578)
-        Me.eventtextbox.Name = "eventtextbox"
-        Me.eventtextbox.Size = New System.Drawing.Size(100, 20)
-        Me.eventtextbox.TabIndex = 7
         '
         'MainForm
         '
@@ -999,7 +999,7 @@ Partial Class MainForm
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
         CType(Me.DataGridViewSleepStats, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Chart5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ChartAverageSleep, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -1061,7 +1061,7 @@ Partial Class MainForm
     Friend WithEvents Label19 As Label
     Friend WithEvents TextBoxActualSteps As TextBox
     Friend WithEvents Label33 As Label
-    Friend WithEvents Chart5 As DataVisualization.Charting.Chart
+    Friend WithEvents ChartAverageSleep As DataVisualization.Charting.Chart
     Friend WithEvents ButtonAllDays As Button
     Friend WithEvents ButtonLastDay As Button
     Friend WithEvents ButtonLast30Days As Button
