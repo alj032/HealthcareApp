@@ -71,8 +71,6 @@ Public Class MainForm
 
     ''When a user clicks the last day buttons we select the top row from their steps and display it in the datagridview
     Private Sub ButtonLastDay_Click(sender As Object, e As EventArgs) Handles ButtonLastDay.Click
-
-
         db.sql = "SELECT Top 1 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
         db.fill(DataGridViewSteps)
 
@@ -85,7 +83,6 @@ Public Class MainForm
 
         Dim adapter As New SqlDataAdapter(sqlsteps1day, connection)
         Dim dataset As New DataSet()
-        dataset.Clear()
         adapter.Fill(dataset, "Steps")
 
         Dim chartarea1 As ChartArea = New ChartArea()
@@ -119,9 +116,6 @@ Public Class MainForm
 
 
 
-
-
-
     End Sub
 
     ''When a user clicks the last 30 day buttons we select the top 30 row from their steps and display it in the datagridview
@@ -142,11 +136,9 @@ Public Class MainForm
 
         Dim adapter As New SqlDataAdapter(sqlsteps1day, connection)
         Dim dataset As New DataSet()
-        dataset.Clear()
         adapter.Fill(dataset, "Steps")
 
         Dim chartarea1 As ChartArea = New ChartArea()
-
         Dim legend1 As Legend = New Legend()
         Dim series1 As Series = New Series()
         Dim chart1 = New Chart()
@@ -242,52 +234,6 @@ Public Class MainForm
 
         End If
     End Sub
-    ''Filling the sleep chart when the button is clicked
-    Private Sub ButtonLastSleepDay_Click(sender As Object, e As EventArgs) Handles ButtonLastSleepDay.Click
 
 
-        db.sql = "SELECT Top 30 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
-        db.fill(DataGridViewSteps)
-
-        Dim connection As New SqlConnection With {.ConnectionString = "Server=essql1.walton.uark.edu;Database=Xanadu;Trusted_Connection=yes;"}
-        'prepare a query
-        Dim command As New SqlCommand With {.Connection = connection}
-
-
-        Dim sqlsteps1day As String = "SELECT Top 30 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
-
-        Dim adapter As New SqlDataAdapter(sqlsteps1day, connection)
-        Dim dataset As New DataSet()
-        dataset.Clear()
-        adapter.Fill(dataset, "Steps")
-
-
-
-        Dim legend1 As Legend = New Legend()
-        Dim series1 As Series = New Series()
-
-        Me.Controls.Add(ChartAverageSleep)
-
-
-        legend1.Name = "Legend"
-        ChartAverageSleep.Legends.Add(legend1)
-
-        ChartAverageSleep.Name = "Sales by Year"
-        ChartAverageSleep.Titles.Add("Sales By Year")
-        series1.ChartArea = "ChartArea"
-        series1.Legend = "Legend"
-        series1.Name = "series1"
-        ChartAverageSleep.Series.Add(series1)
-        ChartAverageSleep.TabIndex = 0
-        ChartAverageSleep.Text = "chart1"
-        ChartAverageSleep.Series("series1").XValueMember = "Start"
-        ChartAverageSleep.Series("series1").YValueMembers = "Activity (steps)"
-        ChartAverageSleep.ChartAreas(0).AxisX.Title = "Day"
-        ChartAverageSleep.ChartAreas(0).AxisY.Title = "Steps"
-        rttt
-
-
-        ChartAverageSleep.DataSource = dataset.Tables("Steps")
-
-    End Sub
 End Class
