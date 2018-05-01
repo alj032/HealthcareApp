@@ -81,6 +81,42 @@
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="db.vb" />
+    <Compile Include="SleepStats30.Designer.vb">
+      <DependentUpon>SleepStats30.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SleepStats30.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SleepStatsAll.Designer.vb">
+      <DependentUpon>SleepStatsAll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SleepStatsAll.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SleepStatsLast.Designer.vb">
+      <DependentUpon>SleepStatsLast.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SleepStatsLast.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepStatsAll.Designer.vb">
+      <DependentUpon>StepStatsAll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StepStatsAll.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepStats30.Designer.vb">
+      <DependentUpon>StepStats30.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StepStats30.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StepStatsLast.Designer.vb">
+      <DependentUpon>StepStatsLast.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StepStatsLast.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserSignUp.Designer.vb">
       <DependentUpon>UserSignUp.vb</DependentUpon>
     </Compile>
@@ -125,6 +161,21 @@
     <EmbeddedResource Include="AddEvent.resx">
       <DependentUpon>AddEvent.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SleepStats30.resx">
+      <DependentUpon>SleepStats30.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SleepStatsAll.resx">
+      <DependentUpon>SleepStatsAll.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SleepStatsLast.resx">
+      <DependentUpon>SleepStatsLast.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepStatsAll.resx">
+      <DependentUpon>StepStatsAll.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepStats30.resx">
+      <DependentUpon>StepStats30.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginScreen.resx">
       <DependentUpon>LoginScreen.vb</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +187,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StepStatsLast.resx">
+      <DependentUpon>StepStatsLast.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserSignUp.resx">
       <DependentUpon>UserSignUp.vb</DependentUpon>
@@ -172,6 +226,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Right Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Steps Info.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sleep Info.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Howmuchsleep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Riskoflowsleep.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sleepingtips.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -54,7 +54,7 @@ Public Class MainForm
         db.fill(DataGridViewEvents)
 
         ''Filling EventRegistration DataGridView
-        db.sql = "SELECT * FROM [EventRegistration] where userid = @userid"
+        db.sql = "Select Event_Name, Event_Location, Event_Date, Event_Description From [Events] Join EventRegistration ER ON Events.Event_ID = ER.EventId Where UserID = @userid"
         db.bind("@userid", UserID)
         db.fill(DataGridViewEventRegister)
 
@@ -74,107 +74,31 @@ Public Class MainForm
         db.sql = "SELECT Top 1 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
         db.fill(DataGridViewSteps)
 
-        Dim connection As New SqlConnection With {.ConnectionString = "Server=essql1.walton.uark.edu;Database=Xanadu;Trusted_Connection=yes;"}
-        'prepare a query
-        Dim command As New SqlCommand With {.Connection = connection}
-
-
-        Dim sqlsteps1day As String = "SELECT Top 1 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
-
-        Dim adapter As New SqlDataAdapter(sqlsteps1day, connection)
-        Dim dataset As New DataSet()
-        adapter.Fill(dataset, "Steps")
-
-        Dim chartarea1 As ChartArea = New ChartArea()
-        Dim legend1 As Legend = New Legend()
-        Dim series1 As Series = New Series()
-        Dim chart1 = New Chart()
-        Me.Controls.Add(chart1)
-        chartarea1.Name = "ChartArea"
-        chart1.ChartAreas.Add(chartarea1)
-        legend1.Name = "Legend"
-        chart1.Legends.Add(legend1)
-        chart1.Location = New System.Drawing.Point(13, 13)
-        chart1.Name = "Sales by Year"
-        chart1.Titles.Add("Sales By Year")
-        series1.ChartArea = "ChartArea"
-        series1.Legend = "Legend"
-        series1.Name = "series1"
-        chart1.Series.Add(series1)
-        chart1.Size = New System.Drawing.Size(1000, 400)
-        chart1.TabIndex = 0
-        chart1.Text = "chart1"
-        chart1.Series("series1").XValueMember = "Start"
-        chart1.Series("series1").YValueMembers = "Activity (steps)"
-        chart1.ChartAreas(0).AxisX.Title = "Day"
-        chart1.ChartAreas(0).AxisY.Title = "Steps"
-
-
-
-        chart1.DataSource = dataset.Tables("Steps")
-
-
-
-
     End Sub
-
+    Private Sub ButtonLastDayStepsGraph_Click(sender As Object, e As EventArgs) Handles ButtonLastDayStepsGraph.Click
+        ''Open Graph
+        StepStatsLast.ShowDialog()
+    End Sub
     ''When a user clicks the last 30 day buttons we select the top 30 row from their steps and display it in the datagridview
     Private Sub ButtonLast30Days_Click(sender As Object, e As EventArgs) Handles ButtonLast30Days.Click
         db.sql = "SELECT Top 30 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
         db.fill(DataGridViewSteps)
+    End Sub
 
-
-        db.sql = "SELECT Top 30 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
-        db.fill(DataGridViewSteps)
-
-        Dim connection As New SqlConnection With {.ConnectionString = "Server=essql1.walton.uark.edu;Database=Xanadu;Trusted_Connection=yes;"}
-        'prepare a query
-        Dim command As New SqlCommand With {.Connection = connection}
-
-
-        Dim sqlsteps1day As String = "SELECT Top 30 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
-
-        Dim adapter As New SqlDataAdapter(sqlsteps1day, connection)
-        Dim dataset As New DataSet()
-        adapter.Fill(dataset, "Steps")
-
-        Dim chartarea1 As ChartArea = New ChartArea()
-        Dim legend1 As Legend = New Legend()
-        Dim series1 As Series = New Series()
-        Dim chart1 = New Chart()
-        Me.Controls.Add(chart1)
-        chartarea1.Name = "ChartArea"
-        chart1.ChartAreas.Add(chartarea1)
-        legend1.Name = "Legend"
-        chart1.Legends.Add(legend1)
-        chart1.Location = New System.Drawing.Point(13, 13)
-        chart1.Name = "Sales by Year"
-        chart1.Titles.Add("Sales By Year")
-        series1.ChartArea = "ChartArea"
-        series1.Legend = "Legend"
-        series1.Name = "series1"
-        chart1.Series.Add(series1)
-        chart1.Size = New System.Drawing.Size(1000, 400)
-        chart1.TabIndex = 0
-        chart1.Text = "chart1"
-        chart1.Series("series1").XValueMember = "Start"
-        chart1.Series("series1").YValueMembers = "Activity (steps)"
-        chart1.ChartAreas(0).AxisX.Title = "Day"
-        chart1.ChartAreas(0).AxisY.Title = "Steps"
-
-
-
-        chart1.DataSource = dataset.Tables("Steps")
-
-
-
-
+    Private Sub ButtonLast30StepsGraph_Click(sender As Object, e As EventArgs) Handles ButtonLast30StepsGraph.Click
+        ''Open sleep graph for last 30 days
+        SleepStats30Days.ShowDialog()
     End Sub
 
     ''When a user clicks the all days button we select all rows from their steps and display it in the datagridview
     Private Sub ButtonAllDays_Click(sender As Object, e As EventArgs) Handles ButtonAllDays.Click
         db.sql = "SELECT [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
         db.fill(DataGridViewSteps)
+    End Sub
+
+    Private Sub ButtonAllStepsGraph_Click(sender As Object, e As EventArgs) Handles ButtonAllStepsGraph.Click
+        ''Open sleep graph for all days
+        StepStatsAll.ShowDialog()
     End Sub
 
     ''AddEvent Button Click
@@ -207,18 +131,18 @@ Public Class MainForm
             db.bind("@EventID", EventID)
             db.execute()
             MsgBox("Sucessfully registered for event!", MsgBoxStyle.OkOnly)
-            db.sql = "SELECT * FROM [EventRegistration] where userid = @userid"
+            db.sql = "Select Event_Name, Event_Location, Event_Date, Event_Description From [Events] Join EventRegistration ER ON Events.Event_ID = ER.EventId Where UserID = @userid"
             db.bind("@userid", UserID)
             db.fill(DataGridViewEventRegister)
         End If
     End Sub
 
     Private Sub DataGridViewSteps_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewSteps.CellClick
-
+        ''If a cell is clicked 
         If (DataGridViewSteps.SelectedRows.Count > 0) Then ''make Then sure user Select at least 1 row 
+            ''Declare steps
             Dim Steps As Int32
-
-
+            Dim TargetSteps As Int32
 
             ''Setting variable = to the value in the datagrid view
             TextBoxActualSteps.Text = DataGridViewSteps.SelectedRows(0).Cells(1).Value
@@ -227,13 +151,61 @@ Public Class MainForm
             TextBoxActualDistance.Text = (Steps * 2.5) / (5280)
 
 
+            db.sql = "Select targetsteps from Credentials Where UserID = @UserID"
+            db.bind("@UserID", UserID)
+            db.fill(DataGridViewTargetSteps)
+
+            DataGridViewTargetSteps.Rows(0).Selected = True
 
 
-
-
-
+            TextBoxTargetSteps.Text = DataGridViewTargetSteps.SelectedRows(0).Cells(0).Value
+            TargetSteps = Convert.ToInt32(TextBoxTargetSteps.Text)
+            TextBoxTargetCalories.Text = TargetSteps \ 20
+            TextBoxTargetDistance.Text = (TargetSteps * 2.5) / (5280)
         End If
     End Sub
 
+    Private Sub ButtonLastSleepDay_Click(sender As Object, e As EventArgs) Handles ButtonLastSleepDay.Click
+        ''Filling datagrid view witht the most recent record
+        db.sql = "SELECT Top 1 [Start], [Time in bed] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
+        db.fill(DataGridViewSleepStats)
 
+
+
+
+
+
+
+
+
+
+    End Sub
+
+    Private Sub ButtonLast30_Click(sender As Object, e As EventArgs) Handles ButtonLast30.Click
+        db.sql = "SELECT Top 30 [Start], [Time in bed] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
+        db.fill(DataGridViewSleepStats)
+
+
+
+    End Sub
+
+    Private Sub ButtonAllRecords_Click(sender As Object, e As EventArgs) Handles ButtonAllRecords.Click
+        db.sql = "SELECT [Start], [Time in bed] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
+        db.fill(DataGridViewSleepStats)
+    End Sub
+
+    Private Sub ButtonSleepLast_Click(sender As Object, e As EventArgs) Handles ButtonSleepLast.Click
+        ''Show Graph
+        SleepStatsLast.ShowDialog()
+    End Sub
+
+    Private Sub ButtonSleep30_Click(sender As Object, e As EventArgs) Handles ButtonSleep30.Click
+        ''Show Graph
+        SleepStats30.ShowDialog()
+    End Sub
+
+    Private Sub ButtonSleepAllRecord_Click(sender As Object, e As EventArgs) Handles ButtonSleepAllRecord.Click
+        ''Show Graph
+        SleepStatsAll.ShowDialog()
+    End Sub
 End Class
