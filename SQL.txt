@@ -11,6 +11,6 @@ CREATE TABLE Credentials (
 	); 
 
   create table eventregistration (
-  	userID varchar(255) not null,
-	EventID varchar(255) not null
+  	userID int not null,
+	EventID int not null
   );
