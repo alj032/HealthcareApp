@@ -8,7 +8,7 @@ Public Class MainForm
     Protected db As New db
     Public UserID
     Public Username As String
-    Public EventID
+    Public EventID = 0
 
 
 
@@ -189,43 +189,36 @@ Public Class MainForm
     Private Sub ButtonAddEvent_Click(sender As Object, e As EventArgs) Handles ButtonAddEvent.Click
         AddEvent.Show()
     End Sub
-    Private Sub DataGridViewEvents_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewEvents.CellClick
-        usertextbox.Text = UserID
-        EventID = DataGridViewEvents.SelectedRows(0).Cells(0).Value
-        eventtextbox.Text = EventID
-    End Sub
+
     Private Sub ButtonSignUp_Click(sender As Object, e As EventArgs) Handles ButtonSignUp.Click
-        MessageBox.Show(UserID)
-        MessageBox.Show(EventID)
-
-        'connects to xanadu databse and looks at the eventregistration table
-        Dim connection As New SqlConnection("Server=essql1.walton.uark.edu;Database=xanadu;Trusted_Connection=yes")
-        Dim command As New SqlCommand("Select * from EventRegistration where UserID = @UserID AND EventID = @EventID", connection)
-        ' looks to see if the username is already in the database
-        command.Parameters.Add("@UserID", SqlDbType.VarChar).Value = usertextbox.Text
-        command.Parameters.Add("@EventID", SqlDbType.VarChar).Value = eventtextbox.Text
-        Dim adapter As New SqlDataAdapter(command)
-        Dim table As New DataTable()
-        adapter.Fill(table)
-        'if there isnt a match error message continue with user creation
-        If table.Rows.Count() <= 0 Then
-            MsgBox("You have already registered for this event", MsgBoxStyle.OkOnly, "Error!")
+        EventID = DataGridViewEvents.SelectedRows(0).Cells(0).Value
+        If EventID = 0 Then
+            MsgBox("Please select an event!", MsgBoxStyle.OkOnly, "Error!")
             Exit Sub
-        Else
-            If (DataGridViewEvents.SelectedRows.Count > 0) Then ''make Then sure user Select at least 1 row 
-                ''Registering a user for an event
-                db.sql = "Insert Into EventRegistration (UserID, EventID) Values (@UserID, @EventID)"
-                db.bind("@UserID", UserID)
-                db.bind("@EventID", EventID)
-                db.execute()
-                db.fill(DataGridViewEventRegister)
-
-            End If
         End If
-
-
-
-
+        'connects to xanadu databse and looks at the event registration table
+        Dim connection As New SqlConnection("Server=essql1.walton.uark.edu;Database=xanadu;Trusted_Connection=yes")
+        Dim command As New SqlCommand("Select * from EventRegistration where UserID = @UserID and EventID = @EventID", connection)
+        ' looks to see if the username is already in the database
+        command.Parameters.Add("@UserID", SqlDbType.Int).Value = UserID
+        command.Parameters.Add("@EventID", SqlDbType.Int).Value = EventID
+        Dim adapter As New SqlDataAdapter(command)
+        Dim table2 As New DataTable()
+        adapter.Fill(table2)
+        'if there isnt a match error message continue with event registration
+        If table2.Rows.Count() > 0 Then
+            MsgBox("You have already registered for this event", MsgBoxStyle.OkOnly, "Error!")
+        Else
+            ''Registering a user for an event
+            db.sql = "Insert Into EventRegistration (UserID, EventID) Values (@UserID, @EventID)"
+            db.bind("@UserID", UserID)
+            db.bind("@EventID", EventID)
+            db.execute()
+            MsgBox("Sucessfully registered for event!", MsgBoxStyle.OkOnly)
+            db.sql = "SELECT * FROM [EventRegistration] where userid = @userid"
+            db.bind("@userid", UserID)
+            db.fill(DataGridViewEventRegister)
+        End If
     End Sub
 
     Private Sub DataGridViewSteps_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewSteps.CellClick
