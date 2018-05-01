@@ -34,9 +34,6 @@ Partial Class MainForm
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
@@ -70,6 +67,9 @@ Partial Class MainForm
         Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.TabControlHomepage = New System.Windows.Forms.TabControl()
         Me.TabPageDashboard = New System.Windows.Forms.TabPage()
@@ -84,10 +84,8 @@ Partial Class MainForm
         Me.DataGridViewBreakfastDashboard = New System.Windows.Forms.DataGridView()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.LabelWelcome = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Chart3 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TabPageEvents = New System.Windows.Forms.TabPage()
         Me.eventtextbox = New System.Windows.Forms.TextBox()
         Me.usertextbox = New System.Windows.Forms.TextBox()
@@ -153,6 +151,8 @@ Partial Class MainForm
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.TabControlHomepage.SuspendLayout()
         Me.TabPageDashboard.SuspendLayout()
         CType(Me.DataGridViewEventRegister, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -160,7 +160,6 @@ Partial Class MainForm
         CType(Me.DataGridViewLunchDashboard, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewBreakfastDashboard, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chart3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageEvents.SuspendLayout()
         CType(Me.DataGridViewEvents, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage1.SuspendLayout()
@@ -180,6 +179,7 @@ Partial Class MainForm
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControlHomepage
@@ -199,6 +199,8 @@ Partial Class MainForm
         'TabPageDashboard
         '
         Me.TabPageDashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.TabPageDashboard.Controls.Add(Me.Label2)
+        Me.TabPageDashboard.Controls.Add(Me.Chart1)
         Me.TabPageDashboard.Controls.Add(Me.Label32)
         Me.TabPageDashboard.Controls.Add(Me.DataGridViewEventRegister)
         Me.TabPageDashboard.Controls.Add(Me.MonthCalendar2)
@@ -210,10 +212,8 @@ Partial Class MainForm
         Me.TabPageDashboard.Controls.Add(Me.DataGridViewBreakfastDashboard)
         Me.TabPageDashboard.Controls.Add(Me.Label28)
         Me.TabPageDashboard.Controls.Add(Me.LabelWelcome)
-        Me.TabPageDashboard.Controls.Add(Me.Label2)
         Me.TabPageDashboard.Controls.Add(Me.Label1)
         Me.TabPageDashboard.Controls.Add(Me.Chart3)
-        Me.TabPageDashboard.Controls.Add(Me.Chart1)
         Me.TabPageDashboard.Location = New System.Drawing.Point(4, 22)
         Me.TabPageDashboard.Name = "TabPageDashboard"
         Me.TabPageDashboard.Padding = New System.Windows.Forms.Padding(3)
@@ -226,7 +226,7 @@ Partial Class MainForm
         '
         Me.Label32.AutoSize = True
         Me.Label32.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label32.Location = New System.Drawing.Point(573, 411)
+        Me.Label32.Location = New System.Drawing.Point(548, 341)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(349, 29)
         Me.Label32.TabIndex = 21
@@ -251,7 +251,7 @@ Partial Class MainForm
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewEventRegister.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridViewEventRegister.Location = New System.Drawing.Point(542, 443)
+        Me.DataGridViewEventRegister.Location = New System.Drawing.Point(517, 373)
         Me.DataGridViewEventRegister.Name = "DataGridViewEventRegister"
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
@@ -266,7 +266,7 @@ Partial Class MainForm
         '
         'MonthCalendar2
         '
-        Me.MonthCalendar2.Location = New System.Drawing.Point(586, 106)
+        Me.MonthCalendar2.Location = New System.Drawing.Point(611, 106)
         Me.MonthCalendar2.Name = "MonthCalendar2"
         Me.MonthCalendar2.TabIndex = 19
         '
@@ -416,57 +416,31 @@ Partial Class MainForm
         Me.LabelWelcome.TabIndex = 6
         Me.LabelWelcome.Text = "Hello (Enter Name), Lets have a healthy day!"
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(1032, 106)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(147, 29)
-        Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Sleep Stats"
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1032, 377)
+        Me.Label1.Location = New System.Drawing.Point(995, 345)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(132, 29)
+        Me.Label1.Size = New System.Drawing.Size(267, 29)
         Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Step Stats"
+        Me.Label1.Text = "Monthly Sleep Quality"
         '
         'Chart3
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart3.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart3.Legends.Add(Legend1)
-        Me.Chart3.Location = New System.Drawing.Point(1037, 409)
-        Me.Chart3.Name = "Chart3"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart3.Series.Add(Series1)
-        Me.Chart3.Size = New System.Drawing.Size(320, 198)
-        Me.Chart3.TabIndex = 2
-        Me.Chart3.Text = "Chart3"
-        '
-        'Chart1
-        '
         ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
+        Me.Chart3.ChartAreas.Add(ChartArea2)
         Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
-        Me.Chart1.Location = New System.Drawing.Point(1037, 138)
-        Me.Chart1.Name = "Chart1"
+        Me.Chart3.Legends.Add(Legend2)
+        Me.Chart3.Location = New System.Drawing.Point(962, 409)
+        Me.Chart3.Name = "Chart3"
         Series2.ChartArea = "ChartArea1"
         Series2.Legend = "Legend1"
         Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
-        Me.Chart1.Size = New System.Drawing.Size(320, 198)
-        Me.Chart1.TabIndex = 0
-        Me.Chart1.Text = "Chart1"
+        Me.Chart3.Series.Add(Series2)
+        Me.Chart3.Size = New System.Drawing.Size(395, 279)
+        Me.Chart3.TabIndex = 2
+        Me.Chart3.Text = "Chart3"
         '
         'TabPageEvents
         '
@@ -1356,6 +1330,32 @@ Partial Class MainForm
         Me.WebBrowser1.TabIndex = 8
         Me.WebBrowser1.Url = New System.Uri("https://www.facebook.com/Xanadu-Heatlh-434256350353251", System.UriKind.Absolute)
         '
+        'Chart1
+        '
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
+        Me.Chart1.Location = New System.Drawing.Point(962, 63)
+        Me.Chart1.Name = "Chart1"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Size = New System.Drawing.Size(395, 279)
+        Me.Chart1.TabIndex = 22
+        Me.Chart1.Text = "Chart1"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(995, 31)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(239, 29)
+        Me.Label2.TabIndex = 23
+        Me.Label2.Text = "Monthly Step Count"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1374,7 +1374,6 @@ Partial Class MainForm
         CType(Me.DataGridViewLunchDashboard, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewBreakfastDashboard, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Chart3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageEvents.ResumeLayout(False)
         Me.TabPageEvents.PerformLayout()
         CType(Me.DataGridViewEvents, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1398,6 +1397,7 @@ Partial Class MainForm
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1409,10 +1409,8 @@ Partial Class MainForm
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents TabPage4 As TabPage
-    Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Chart3 As DataVisualization.Charting.Chart
-    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
     Friend WithEvents LabelWelcome As Label
     Friend WithEvents WebBrowser1 As WebBrowser
     Friend WithEvents Label4 As Label
@@ -1484,4 +1482,6 @@ Partial Class MainForm
     Friend WithEvents ButtonSleep30 As Button
     Friend WithEvents ButtonSleepLast As Button
     Friend WithEvents Label12 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
 End Class

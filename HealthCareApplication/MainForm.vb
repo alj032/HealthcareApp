@@ -65,6 +65,92 @@ Public Class MainForm
 
 
 
+        ''Dashboard GRAHPS
+        ''Sleep Graph
+        ''Graph
+        Dim connection As New SqlConnection With {.ConnectionString = "Server=essql1.walton.uark.edu;Database=Xanadu;Trusted_Connection=yes;"}
+        'prepare a query
+        Dim command As New SqlCommand With {.Connection = connection}
+
+
+        Dim sqlSleepAll As String = "SELECT Top 30 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
+
+        Dim adapter As New SqlDataAdapter(sqlSleepAll, connection)
+        Dim dataset As New DataSet()
+        adapter.Fill(dataset, "Steps30Dash")
+
+        Dim chartarea1 As ChartArea = New ChartArea()
+        Dim legend1 As Legend = New Legend()
+        Dim series1 As Series = New Series()
+        Dim chartStepDashboard = New Chart()
+        Me.Controls.Add(chartStepDashboard)
+        chartarea1.Name = "ChartArea"
+        chartStepDashboard.ChartAreas.Add(chartarea1)
+        legend1.Name = "Legend"
+        chartStepDashboard.Legends.Add(legend1)
+        chartStepDashboard.Location = New System.Drawing.Point(962, 63)
+        chartStepDashboard.Name = "Hours_of_Sleep"
+        chartStepDashboard.Titles.Add("Number of Steps for 30 Records")
+        series1.ChartArea = "ChartArea"
+        series1.Legend = "Legend"
+        series1.Name = "series1"
+        chartStepDashboard.Series.Add(series1)
+        chartStepDashboard.Size = New System.Drawing.Size(395, 279)
+        chartStepDashboard.TabIndex = 0
+        chartStepDashboard.Text = "chart1"
+        chartStepDashboard.Series("series1").XValueMember = "Start"
+        chartStepDashboard.Series("series1").YValueMembers = "Activity (steps)"
+        chartStepDashboard.ChartAreas(0).AxisX.Title = "Day"
+        chartStepDashboard.ChartAreas(0).AxisY.Title = "Number of Steps"
+
+
+
+        chartStepDashboard.DataSource = dataset.Tables("Steps30Dash")
+        chartStepDashboard.BringToFront()
+
+
+        ''Sleep Graph
+        ''Graph
+        Dim connection1 As New SqlConnection With {.ConnectionString = "Server=essql1.walton.uark.edu;Database=Xanadu;Trusted_Connection=yes;"}
+        'prepare a query
+        Dim command1 As New SqlCommand With {.Connection = connection1}
+
+
+        Dim sqlSleepAll1 As String = "SELECT Top 30 [Start],[Sleep Quality] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
+
+        Dim adapter1 As New SqlDataAdapter(sqlSleepAll1, connection1)
+        Dim dataset1 As New DataSet()
+        adapter1.Fill(dataset1, "Sleep30Dash")
+
+        Dim chartarea11 As ChartArea = New ChartArea()
+        Dim legend11 As Legend = New Legend()
+        Dim series11 As Series = New Series()
+        Dim chartSleepDashboard = New Chart()
+        Me.Controls.Add(chartSleepDashboard)
+        chartarea11.Name = "ChartArea"
+        chartSleepDashboard.ChartAreas.Add(chartarea11)
+        legend11.Name = "Legend"
+        chartSleepDashboard.Legends.Add(legend11)
+        chartSleepDashboard.Location = New System.Drawing.Point(962, 409)
+        chartSleepDashboard.Name = "Hours_of_Sleep"
+        chartSleepDashboard.Titles.Add("Quality of Sleep for 30 Records")
+        series11.ChartArea = "ChartArea"
+        series11.Legend = "Legend"
+        series11.Name = "series1"
+        chartSleepDashboard.Series.Add(series11)
+        chartSleepDashboard.Size = New System.Drawing.Size(395, 279)
+        chartSleepDashboard.TabIndex = 0
+        chartSleepDashboard.Text = "chart1"
+        chartSleepDashboard.Series("series1").XValueMember = "Start"
+        chartSleepDashboard.Series("series1").YValueMembers = "Sleep Quality"
+        chartSleepDashboard.ChartAreas(0).AxisX.Title = "Day"
+        chartSleepDashboard.ChartAreas(0).AxisY.Title = "Sleep Quality (0-100)"
+
+
+
+        chartSleepDashboard.DataSource = dataset1.Tables("Sleep30Dash")
+        chartSleepDashboard.BringToFront()
+
 
 
     End Sub
