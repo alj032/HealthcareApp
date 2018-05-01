@@ -23,7 +23,7 @@ Public Class LoginScreen
             MsgBox("Credentials don't match!", MsgBoxStyle.OkOnly, "Error!")
         Else
             Username = TextBox1.Text
-            UserID = table.Rows.Item(0).Item("ID")
+            UserID = table.Rows.Item(0).Item("userID")
             MainForm.Show()
             Me.Close()
         End If
