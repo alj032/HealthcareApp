@@ -6,8 +6,11 @@ Public Class MainForm
 
     ''Calling the database
     Protected db As New db
-    Public UserID As Int16
+    Public UserID
     Public Username As String
+    Public EventID
+
+
 
     ''When the form loads
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -51,7 +54,8 @@ Public Class MainForm
         db.fill(DataGridViewEvents)
 
         ''Filling EventRegistration DataGridView
-        db.sql = "SELECT * FROM [EventRegistration]"
+        db.sql = "SELECT * FROM [EventRegistration] where userid = @userid"
+        db.bind("@userid", UserID)
         db.fill(DataGridViewEventRegister)
 
         ''Filling EventRegistration DataGridView
@@ -177,23 +181,38 @@ Public Class MainForm
     Private Sub ButtonAddEvent_Click(sender As Object, e As EventArgs) Handles ButtonAddEvent.Click
         AddEvent.Show()
     End Sub
-
+    Private Sub DataGridViewEvents_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewEvents.CellClick
+        usertextbox.Text = UserID
+        EventID = DataGridViewEvents.SelectedRows(0).Cells(0).Value
+        eventtextbox.Text = EventID
+    End Sub
     Private Sub ButtonSignUp_Click(sender As Object, e As EventArgs) Handles ButtonSignUp.Click
-        ''Local variable EventID to store our value from datagrid view
-        Dim EventID As Int16
+        MessageBox.Show(UserID)
+        MessageBox.Show(EventID)
 
-        If (DataGridViewEvents.SelectedRows.Count > 0) Then ''make Then sure user Select at least 1 row 
-            ''Setting variable = to the value in the datagrid view
-            EventID = DataGridViewEvents.SelectedRows(0).Cells(0).Value
+        'connects to xanadu databse and looks at the eventregistration table
+        Dim connection As New SqlConnection("Server=essql1.walton.uark.edu;Database=xanadu;Trusted_Connection=yes")
+        Dim command As New SqlCommand("Select * from EventRegistration where UserID = @UserID AND EventID = @EventID", connection)
+        ' looks to see if the username is already in the database
+        command.Parameters.Add("@UserID", SqlDbType.VarChar).Value = usertextbox.Text
+        command.Parameters.Add("@EventID", SqlDbType.VarChar).Value = eventtextbox.Text
+        Dim adapter As New SqlDataAdapter(command)
+        Dim table As New DataTable()
+        adapter.Fill(table)
+        'if there isnt a match error message continue with user creation
+        If table.Rows.Count() <= 0 Then
+            MsgBox("You have already registered for this event", MsgBoxStyle.OkOnly, "Error!")
+            Exit Sub
+        Else
+            If (DataGridViewEvents.SelectedRows.Count > 0) Then ''make Then sure user Select at least 1 row 
+                ''Registering a user for an event
+                db.sql = "Insert Into EventRegistration (UserID, EventID) Values (@UserID, @EventID)"
+                db.bind("@UserID", UserID)
+                db.bind("@EventID", EventID)
+                db.execute()
+                db.fill(DataGridViewEventRegister)
 
-
-            ''Registering a user for an event
-            db.sql = "  Insert Into EventRegistration (UserID, EventID) Values (@UserID, @EventID)"
-            db.bind("@UserID", UserID)
-            db.bind("@EventID", EventID)
-            db.execute()
-
-
+            End If
         End If
 
 
@@ -222,4 +241,6 @@ Public Class MainForm
 
         End If
     End Sub
+
+
 End Class

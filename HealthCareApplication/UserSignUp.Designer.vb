@@ -31,18 +31,32 @@ Partial Class UserSignUp
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ButtonCancelSignUp = New System.Windows.Forms.Button()
+        Me.Goal = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Heighttextbox = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.LastNameTextbox = New System.Windows.Forms.TextBox()
+        Me.FirstnameTextBox = New System.Windows.Forms.TextBox()
+        Me.GoalCombobox = New System.Windows.Forms.ComboBox()
+        Me.txtBirthday1 = New System.Windows.Forms.MaskedTextBox()
+        Me.lblBirthdayFormat = New System.Windows.Forms.Label()
+        Me.weighttextbox = New System.Windows.Forms.MaskedTextBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(102, 12)
+        Me.TextBox1.Location = New System.Drawing.Point(163, 242)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(234, 20)
         Me.TextBox1.TabIndex = 0
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(102, 47)
+        Me.TextBox2.Location = New System.Drawing.Point(163, 277)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(234, 20)
         Me.TextBox2.TabIndex = 1
@@ -50,60 +64,211 @@ Partial Class UserSignUp
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(41, 15)
+        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(77, 243)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(55, 13)
+        Me.Label1.Size = New System.Drawing.Size(78, 19)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Username"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(43, 50)
+        Me.Label2.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(81, 278)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(53, 13)
+        Me.Label2.Size = New System.Drawing.Size(74, 19)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Password"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(5, 85)
+        Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(19, 313)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(91, 13)
+        Me.Label3.Size = New System.Drawing.Size(136, 19)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Confirm Password"
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(102, 82)
+        Me.TextBox3.Location = New System.Drawing.Point(163, 312)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(234, 20)
         Me.TextBox3.TabIndex = 4
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(15, 187)
+        Me.Button1.BackColor = System.Drawing.Color.White
+        Me.Button1.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(255, 349)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(333, 56)
+        Me.Button1.Size = New System.Drawing.Size(178, 56)
         Me.Button1.TabIndex = 15
         Me.Button1.Text = "Submit"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'ButtonCancelSignUp
         '
-        Me.ButtonCancelSignUp.Location = New System.Drawing.Point(15, 125)
+        Me.ButtonCancelSignUp.BackColor = System.Drawing.Color.White
+        Me.ButtonCancelSignUp.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonCancelSignUp.Location = New System.Drawing.Point(49, 349)
         Me.ButtonCancelSignUp.Name = "ButtonCancelSignUp"
-        Me.ButtonCancelSignUp.Size = New System.Drawing.Size(333, 56)
+        Me.ButtonCancelSignUp.Size = New System.Drawing.Size(178, 56)
         Me.ButtonCancelSignUp.TabIndex = 16
         Me.ButtonCancelSignUp.Text = "Cancel"
-        Me.ButtonCancelSignUp.UseVisualStyleBackColor = True
+        Me.ButtonCancelSignUp.UseVisualStyleBackColor = False
+        '
+        'Goal
+        '
+        Me.Goal.AutoSize = True
+        Me.Goal.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Goal.Location = New System.Drawing.Point(57, 212)
+        Me.Goal.Name = "Goal"
+        Me.Goal.Size = New System.Drawing.Size(101, 19)
+        Me.Goal.TabIndex = 22
+        Me.Goal.Text = "Primary Goal"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(83, 101)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(72, 19)
+        Me.Label5.TabIndex = 20
+        Me.Label5.Text = "Birthdate"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(97, 138)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(58, 19)
+        Me.Label6.TabIndex = 19
+        Me.Label6.Text = "Weight"
+        '
+        'Heighttextbox
+        '
+        Me.Heighttextbox.Location = New System.Drawing.Point(163, 172)
+        Me.Heighttextbox.Name = "Heighttextbox"
+        Me.Heighttextbox.Size = New System.Drawing.Size(93, 20)
+        Me.Heighttextbox.TabIndex = 18
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(100, 173)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(55, 19)
+        Me.Label7.TabIndex = 28
+        Me.Label7.Text = "Height"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(73, 66)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(82, 19)
+        Me.Label8.TabIndex = 26
+        Me.Label8.Text = "Last Name"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(70, 31)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(85, 19)
+        Me.Label9.TabIndex = 25
+        Me.Label9.Text = "First Name"
+        '
+        'LastNameTextbox
+        '
+        Me.LastNameTextbox.Location = New System.Drawing.Point(163, 65)
+        Me.LastNameTextbox.Name = "LastNameTextbox"
+        Me.LastNameTextbox.Size = New System.Drawing.Size(234, 20)
+        Me.LastNameTextbox.TabIndex = 24
+        '
+        'FirstnameTextBox
+        '
+        Me.FirstnameTextBox.Location = New System.Drawing.Point(163, 30)
+        Me.FirstnameTextBox.Name = "FirstnameTextBox"
+        Me.FirstnameTextBox.Size = New System.Drawing.Size(234, 20)
+        Me.FirstnameTextBox.TabIndex = 23
+        '
+        'GoalCombobox
+        '
+        Me.GoalCombobox.FormattingEnabled = True
+        Me.GoalCombobox.Items.AddRange(New Object() {"Lose weight", "Gain weight", "Maintain weight", "Increase quality of sleep ", "Track fitness progress"})
+        Me.GoalCombobox.Location = New System.Drawing.Point(163, 208)
+        Me.GoalCombobox.Name = "GoalCombobox"
+        Me.GoalCombobox.Size = New System.Drawing.Size(234, 21)
+        Me.GoalCombobox.TabIndex = 29
+        '
+        'txtBirthday1
+        '
+        Me.txtBirthday1.Location = New System.Drawing.Point(163, 102)
+        Me.txtBirthday1.Mask = "0000/00/00"
+        Me.txtBirthday1.Name = "txtBirthday1"
+        Me.txtBirthday1.PromptChar = Global.Microsoft.VisualBasic.ChrW(32)
+        Me.txtBirthday1.Size = New System.Drawing.Size(234, 20)
+        Me.txtBirthday1.TabIndex = 30
+        Me.txtBirthday1.ValidatingType = GetType(Date)
+        '
+        'lblBirthdayFormat
+        '
+        Me.lblBirthdayFormat.AutoSize = True
+        Me.lblBirthdayFormat.Font = New System.Drawing.Font("Times New Roman", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBirthdayFormat.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.lblBirthdayFormat.Location = New System.Drawing.Point(166, 124)
+        Me.lblBirthdayFormat.Name = "lblBirthdayFormat"
+        Me.lblBirthdayFormat.Size = New System.Drawing.Size(60, 10)
+        Me.lblBirthdayFormat.TabIndex = 320
+        Me.lblBirthdayFormat.Text = "YYYY-MM-DD"
+        '
+        'weighttextbox
+        '
+        Me.weighttextbox.Location = New System.Drawing.Point(163, 138)
+        Me.weighttextbox.Mask = "000"
+        Me.weighttextbox.Name = "weighttextbox"
+        Me.weighttextbox.PromptChar = Global.Microsoft.VisualBasic.ChrW(32)
+        Me.weighttextbox.Size = New System.Drawing.Size(234, 20)
+        Me.weighttextbox.TabIndex = 321
+        Me.weighttextbox.ValidatingType = GetType(Date)
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(286, 172)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(111, 20)
+        Me.TextBox4.TabIndex = 322
         '
         'UserSignUp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(360, 255)
+        Me.BackColor = System.Drawing.SystemColors.InactiveCaption
+        Me.ClientSize = New System.Drawing.Size(498, 410)
+        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.weighttextbox)
+        Me.Controls.Add(Me.lblBirthdayFormat)
+        Me.Controls.Add(Me.txtBirthday1)
+        Me.Controls.Add(Me.GoalCombobox)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.LastNameTextbox)
+        Me.Controls.Add(Me.FirstnameTextBox)
+        Me.Controls.Add(Me.Goal)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Heighttextbox)
         Me.Controls.Add(Me.ButtonCancelSignUp)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label3)
@@ -112,6 +277,7 @@ Partial Class UserSignUp
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
+        Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "UserSignUp"
         Me.Text = "User Sign Up"
@@ -128,4 +294,18 @@ Partial Class UserSignUp
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents ButtonCancelSignUp As Button
+    Friend WithEvents Goal As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Heighttextbox As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents LastNameTextbox As TextBox
+    Friend WithEvents FirstnameTextBox As TextBox
+    Friend WithEvents GoalCombobox As ComboBox
+    Friend WithEvents txtBirthday1 As MaskedTextBox
+    Friend WithEvents lblBirthdayFormat As Label
+    Friend WithEvents weighttextbox As MaskedTextBox
+    Friend WithEvents TextBox4 As TextBox
 End Class

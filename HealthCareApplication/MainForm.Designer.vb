@@ -106,15 +106,17 @@ Partial Class MainForm
         Me.TextBoxActualSteps = New System.Windows.Forms.TextBox()
         Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.ButtonAllRecords = New System.Windows.Forms.Button()
+        Me.ButtonLast30 = New System.Windows.Forms.Button()
+        Me.ButtonLastSleepDay = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.DataGridViewSleepStats = New System.Windows.Forms.DataGridView()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.Chart5 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
-        Me.ButtonLastSleepDay = New System.Windows.Forms.Button()
-        Me.ButtonLast30 = New System.Windows.Forms.Button()
-        Me.ButtonAllRecords = New System.Windows.Forms.Button()
+        Me.usertextbox = New System.Windows.Forms.TextBox()
+        Me.eventtextbox = New System.Windows.Forms.TextBox()
         Me.TabControlHomepage.SuspendLayout()
         Me.TabPageDashboard.SuspendLayout()
         CType(Me.DataGridViewEventRegister, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -179,7 +181,7 @@ Partial Class MainForm
         Me.TabPageDashboard.Location = New System.Drawing.Point(4, 22)
         Me.TabPageDashboard.Name = "TabPageDashboard"
         Me.TabPageDashboard.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageDashboard.Size = New System.Drawing.Size(938, 602)
+        Me.TabPageDashboard.Size = New System.Drawing.Size(1377, 694)
         Me.TabPageDashboard.TabIndex = 0
         Me.TabPageDashboard.Text = "Dashboard"
         Me.TabPageDashboard.UseVisualStyleBackColor = True
@@ -360,6 +362,8 @@ Partial Class MainForm
         '
         'TabPageEvents
         '
+        Me.TabPageEvents.Controls.Add(Me.eventtextbox)
+        Me.TabPageEvents.Controls.Add(Me.usertextbox)
         Me.TabPageEvents.Controls.Add(Me.ButtonAddEvent)
         Me.TabPageEvents.Controls.Add(Me.Label4)
         Me.TabPageEvents.Controls.Add(Me.TextBox1)
@@ -369,7 +373,7 @@ Partial Class MainForm
         Me.TabPageEvents.Location = New System.Drawing.Point(4, 22)
         Me.TabPageEvents.Name = "TabPageEvents"
         Me.TabPageEvents.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageEvents.Size = New System.Drawing.Size(938, 602)
+        Me.TabPageEvents.Size = New System.Drawing.Size(1377, 694)
         Me.TabPageEvents.TabIndex = 1
         Me.TabPageEvents.Text = "Upcoming Events"
         Me.TabPageEvents.UseVisualStyleBackColor = True
@@ -447,7 +451,7 @@ Partial Class MainForm
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(938, 602)
+        Me.TabPage1.Size = New System.Drawing.Size(1377, 694)
         Me.TabPage1.TabIndex = 2
         Me.TabPage1.Text = "Diet Plan"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -852,6 +856,33 @@ Partial Class MainForm
         Me.TabPage3.Text = "Sleep Habits"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'ButtonAllRecords
+        '
+        Me.ButtonAllRecords.Location = New System.Drawing.Point(274, 474)
+        Me.ButtonAllRecords.Name = "ButtonAllRecords"
+        Me.ButtonAllRecords.Size = New System.Drawing.Size(128, 46)
+        Me.ButtonAllRecords.TabIndex = 34
+        Me.ButtonAllRecords.Text = "All Records"
+        Me.ButtonAllRecords.UseVisualStyleBackColor = True
+        '
+        'ButtonLast30
+        '
+        Me.ButtonLast30.Location = New System.Drawing.Point(140, 474)
+        Me.ButtonLast30.Name = "ButtonLast30"
+        Me.ButtonLast30.Size = New System.Drawing.Size(128, 46)
+        Me.ButtonLast30.TabIndex = 33
+        Me.ButtonLast30.Text = "Last 30 Days"
+        Me.ButtonLast30.UseVisualStyleBackColor = True
+        '
+        'ButtonLastSleepDay
+        '
+        Me.ButtonLastSleepDay.Location = New System.Drawing.Point(6, 474)
+        Me.ButtonLastSleepDay.Name = "ButtonLastSleepDay"
+        Me.ButtonLastSleepDay.Size = New System.Drawing.Size(128, 46)
+        Me.ButtonLastSleepDay.TabIndex = 32
+        Me.ButtonLastSleepDay.Text = "Last Recorded Day"
+        Me.ButtonLastSleepDay.UseVisualStyleBackColor = True
+        '
         'Label5
         '
         Me.Label5.AutoSize = True
@@ -917,32 +948,19 @@ Partial Class MainForm
         Me.WebBrowser1.TabIndex = 8
         Me.WebBrowser1.Url = New System.Uri("https://www.facebook.com/Xanadu-Heatlh-434256350353251", System.UriKind.Absolute)
         '
-        'ButtonLastSleepDay
+        'usertextbox
         '
-        Me.ButtonLastSleepDay.Location = New System.Drawing.Point(6, 474)
-        Me.ButtonLastSleepDay.Name = "ButtonLastSleepDay"
-        Me.ButtonLastSleepDay.Size = New System.Drawing.Size(128, 46)
-        Me.ButtonLastSleepDay.TabIndex = 32
-        Me.ButtonLastSleepDay.Text = "Last Recorded Day"
-        Me.ButtonLastSleepDay.UseVisualStyleBackColor = True
+        Me.usertextbox.Location = New System.Drawing.Point(474, 579)
+        Me.usertextbox.Name = "usertextbox"
+        Me.usertextbox.Size = New System.Drawing.Size(100, 20)
+        Me.usertextbox.TabIndex = 6
         '
-        'ButtonLast30
+        'eventtextbox
         '
-        Me.ButtonLast30.Location = New System.Drawing.Point(140, 474)
-        Me.ButtonLast30.Name = "ButtonLast30"
-        Me.ButtonLast30.Size = New System.Drawing.Size(128, 46)
-        Me.ButtonLast30.TabIndex = 33
-        Me.ButtonLast30.Text = "Last 30 Days"
-        Me.ButtonLast30.UseVisualStyleBackColor = True
-        '
-        'ButtonAllRecords
-        '
-        Me.ButtonAllRecords.Location = New System.Drawing.Point(274, 474)
-        Me.ButtonAllRecords.Name = "ButtonAllRecords"
-        Me.ButtonAllRecords.Size = New System.Drawing.Size(128, 46)
-        Me.ButtonAllRecords.TabIndex = 34
-        Me.ButtonAllRecords.Text = "All Records"
-        Me.ButtonAllRecords.UseVisualStyleBackColor = True
+        Me.eventtextbox.Location = New System.Drawing.Point(621, 578)
+        Me.eventtextbox.Name = "eventtextbox"
+        Me.eventtextbox.Size = New System.Drawing.Size(100, 20)
+        Me.eventtextbox.TabIndex = 7
         '
         'MainForm
         '
@@ -1064,4 +1082,6 @@ Partial Class MainForm
     Friend WithEvents ButtonAllRecords As Button
     Friend WithEvents ButtonLast30 As Button
     Friend WithEvents ButtonLastSleepDay As Button
+    Friend WithEvents eventtextbox As TextBox
+    Friend WithEvents usertextbox As TextBox
 End Class

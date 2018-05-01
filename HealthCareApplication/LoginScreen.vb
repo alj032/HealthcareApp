@@ -24,7 +24,6 @@ Public Class LoginScreen
         Else
             Username = TextBox1.Text
             UserID = table.Rows.Item(0).Item("ID")
-            MessageBox.Show(UserID)
             MainForm.Show()
             Me.Close()
         End If
