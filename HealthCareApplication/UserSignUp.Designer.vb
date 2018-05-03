@@ -34,7 +34,6 @@ Partial Class UserSignUp
         Me.Goal = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Heighttextbox = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -44,7 +43,10 @@ Partial Class UserSignUp
         Me.txtBirthday1 = New System.Windows.Forms.MaskedTextBox()
         Me.lblBirthdayFormat = New System.Windows.Forms.Label()
         Me.weighttextbox = New System.Windows.Forms.MaskedTextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.fttxtbox = New System.Windows.Forms.MaskedTextBox()
+        Me.inchtxtbox = New System.Windows.Forms.MaskedTextBox()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -52,14 +54,14 @@ Partial Class UserSignUp
         Me.TextBox1.Location = New System.Drawing.Point(163, 242)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(234, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.TextBox1.TabIndex = 8
         '
         'TextBox2
         '
         Me.TextBox2.Location = New System.Drawing.Point(163, 277)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(234, 20)
-        Me.TextBox2.TabIndex = 1
+        Me.TextBox2.TabIndex = 9
         '
         'Label1
         '
@@ -96,7 +98,7 @@ Partial Class UserSignUp
         Me.TextBox3.Location = New System.Drawing.Point(163, 312)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(234, 20)
-        Me.TextBox3.TabIndex = 4
+        Me.TextBox3.TabIndex = 10
         '
         'Button1
         '
@@ -150,13 +152,6 @@ Partial Class UserSignUp
         Me.Label6.TabIndex = 19
         Me.Label6.Text = "Weight"
         '
-        'Heighttextbox
-        '
-        Me.Heighttextbox.Location = New System.Drawing.Point(163, 172)
-        Me.Heighttextbox.Name = "Heighttextbox"
-        Me.Heighttextbox.Size = New System.Drawing.Size(93, 20)
-        Me.Heighttextbox.TabIndex = 18
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -193,14 +188,14 @@ Partial Class UserSignUp
         Me.LastNameTextbox.Location = New System.Drawing.Point(163, 65)
         Me.LastNameTextbox.Name = "LastNameTextbox"
         Me.LastNameTextbox.Size = New System.Drawing.Size(234, 20)
-        Me.LastNameTextbox.TabIndex = 24
+        Me.LastNameTextbox.TabIndex = 2
         '
         'FirstnameTextBox
         '
         Me.FirstnameTextBox.Location = New System.Drawing.Point(163, 30)
         Me.FirstnameTextBox.Name = "FirstnameTextBox"
         Me.FirstnameTextBox.Size = New System.Drawing.Size(234, 20)
-        Me.FirstnameTextBox.TabIndex = 23
+        Me.FirstnameTextBox.TabIndex = 1
         '
         'GoalCombobox
         '
@@ -209,7 +204,7 @@ Partial Class UserSignUp
         Me.GoalCombobox.Location = New System.Drawing.Point(163, 208)
         Me.GoalCombobox.Name = "GoalCombobox"
         Me.GoalCombobox.Size = New System.Drawing.Size(234, 21)
-        Me.GoalCombobox.TabIndex = 29
+        Me.GoalCombobox.TabIndex = 7
         '
         'txtBirthday1
         '
@@ -218,7 +213,7 @@ Partial Class UserSignUp
         Me.txtBirthday1.Name = "txtBirthday1"
         Me.txtBirthday1.PromptChar = Global.Microsoft.VisualBasic.ChrW(32)
         Me.txtBirthday1.Size = New System.Drawing.Size(234, 20)
-        Me.txtBirthday1.TabIndex = 30
+        Me.txtBirthday1.TabIndex = 3
         Me.txtBirthday1.ValidatingType = GetType(Date)
         '
         'lblBirthdayFormat
@@ -239,23 +234,60 @@ Partial Class UserSignUp
         Me.weighttextbox.Name = "weighttextbox"
         Me.weighttextbox.PromptChar = Global.Microsoft.VisualBasic.ChrW(32)
         Me.weighttextbox.Size = New System.Drawing.Size(234, 20)
-        Me.weighttextbox.TabIndex = 321
+        Me.weighttextbox.TabIndex = 4
         Me.weighttextbox.ValidatingType = GetType(Date)
         '
-        'TextBox4
+        'Label4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(286, 172)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(111, 20)
-        Me.TextBox4.TabIndex = 322
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(243, 173)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(39, 19)
+        Me.Label4.TabIndex = 323
+        Me.Label4.Text = "Feet"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Times New Roman", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(376, 172)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(53, 19)
+        Me.Label10.TabIndex = 324
+        Me.Label10.Text = "Inches"
+        '
+        'fttxtbox
+        '
+        Me.fttxtbox.Location = New System.Drawing.Point(163, 172)
+        Me.fttxtbox.Mask = "0"
+        Me.fttxtbox.Name = "fttxtbox"
+        Me.fttxtbox.PromptChar = Global.Microsoft.VisualBasic.ChrW(32)
+        Me.fttxtbox.Size = New System.Drawing.Size(66, 20)
+        Me.fttxtbox.TabIndex = 5
+        Me.fttxtbox.ValidatingType = GetType(Date)
+        '
+        'inchtxtbox
+        '
+        Me.inchtxtbox.Location = New System.Drawing.Point(304, 172)
+        Me.inchtxtbox.Mask = "00"
+        Me.inchtxtbox.Name = "inchtxtbox"
+        Me.inchtxtbox.PromptChar = Global.Microsoft.VisualBasic.ChrW(32)
+        Me.inchtxtbox.Size = New System.Drawing.Size(66, 20)
+        Me.inchtxtbox.TabIndex = 6
+        Me.inchtxtbox.ValidatingType = GetType(Date)
         '
         'UserSignUp
         '
+        Me.AcceptButton = Me.Button1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.ClientSize = New System.Drawing.Size(498, 410)
-        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.inchtxtbox)
+        Me.Controls.Add(Me.fttxtbox)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.weighttextbox)
         Me.Controls.Add(Me.lblBirthdayFormat)
         Me.Controls.Add(Me.txtBirthday1)
@@ -268,7 +300,6 @@ Partial Class UserSignUp
         Me.Controls.Add(Me.Goal)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Heighttextbox)
         Me.Controls.Add(Me.ButtonCancelSignUp)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label3)
@@ -280,6 +311,7 @@ Partial Class UserSignUp
         Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "UserSignUp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "User Sign Up"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -297,7 +329,6 @@ Partial Class UserSignUp
     Friend WithEvents Goal As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents Heighttextbox As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
@@ -307,5 +338,8 @@ Partial Class UserSignUp
     Friend WithEvents txtBirthday1 As MaskedTextBox
     Friend WithEvents lblBirthdayFormat As Label
     Friend WithEvents weighttextbox As MaskedTextBox
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents fttxtbox As MaskedTextBox
+    Friend WithEvents inchtxtbox As MaskedTextBox
 End Class

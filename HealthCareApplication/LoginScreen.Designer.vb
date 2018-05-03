@@ -83,6 +83,7 @@ Partial Class LoginScreen
         '
         'LoginScreen
         '
+        Me.AcceptButton = Me.ButtonLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(206, 277)
@@ -94,6 +95,7 @@ Partial Class LoginScreen
         Me.Controls.Add(Me.ButtonLogin)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "LoginScreen"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         Me.ResumeLayout(False)
         Me.PerformLayout()

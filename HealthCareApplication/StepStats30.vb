@@ -29,7 +29,7 @@ Public Class SleepStats30Days
         chart1.Legends.Add(legend1)
         chart1.Location = New System.Drawing.Point(13, 13)
         chart1.Name = "Hours of Sleep"
-        chart1.Titles.Add("Hours of Sleep for the Last 30 Days")
+        chart1.Titles.Add("Steps for the Last 30 Days")
         series1.ChartArea = "ChartArea"
         series1.Legend = "Legend"
         series1.Name = "series1"

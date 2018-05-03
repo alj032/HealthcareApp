@@ -1,4 +1,4 @@
-﻿Imports System.Data
+﻿
 Imports System.Data.SqlClient
 Imports System.Windows.Forms.DataVisualization.Charting
 
@@ -28,12 +28,12 @@ Public Class StepStatsAll
         chart1.Legends.Add(legend1)
         chart1.Location = New System.Drawing.Point(13, 13)
         chart1.Name = "Hours of Sleep"
-        chart1.Titles.Add("Hours of Sleep for all records")
+        chart1.Titles.Add("All steps")
         series1.ChartArea = "ChartArea"
         series1.Legend = "Legend"
         series1.Name = "series1"
         chart1.Series.Add(series1)
-        chart1.Size = New System.Drawing.Size(1000, 400)
+        chart1.Size = New System.Drawing.Size(1000, 300)
         chart1.TabIndex = 0
         chart1.Text = "chart1"
         chart1.Series("series1").XValueMember = "Start"

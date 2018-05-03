@@ -22,6 +22,9 @@ Partial Class MainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -67,12 +70,12 @@ Partial Class MainForm
         Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.TabControlHomepage = New System.Windows.Forms.TabControl()
         Me.TabPageDashboard = New System.Windows.Forms.TabPage()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.DataGridViewEventRegister = New System.Windows.Forms.DataGridView()
         Me.MonthCalendar2 = New System.Windows.Forms.MonthCalendar()
@@ -97,9 +100,9 @@ Partial Class MainForm
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.MonthCalendar3 = New System.Windows.Forms.MonthCalendar()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView4 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView5 = New System.Windows.Forms.DataGridView()
+        Me.breakfast = New System.Windows.Forms.DataGridView()
+        Me.Dinner = New System.Windows.Forms.DataGridView()
+        Me.Lunch = New System.Windows.Forms.DataGridView()
         Me.DataGridViewAvailableBreakfast = New System.Windows.Forms.DataGridView()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -151,10 +154,11 @@ Partial Class MainForm
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.TabControlHomepage.SuspendLayout()
         Me.TabPageDashboard.SuspendLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewEventRegister, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewDinnerDashboard, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewLunchDashboard, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -163,9 +167,9 @@ Partial Class MainForm
         Me.TabPageEvents.SuspendLayout()
         CType(Me.DataGridViewEvents, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage1.SuspendLayout()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.breakfast, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Dinner, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Lunch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewAvailableBreakfast, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewAvailableDinner, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewAvailableLunch, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -179,7 +183,6 @@ Partial Class MainForm
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControlHomepage
@@ -199,6 +202,7 @@ Partial Class MainForm
         'TabPageDashboard
         '
         Me.TabPageDashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.TabPageDashboard.Controls.Add(Me.TextBox3)
         Me.TabPageDashboard.Controls.Add(Me.Label2)
         Me.TabPageDashboard.Controls.Add(Me.Chart1)
         Me.TabPageDashboard.Controls.Add(Me.Label32)
@@ -221,6 +225,40 @@ Partial Class MainForm
         Me.TabPageDashboard.TabIndex = 0
         Me.TabPageDashboard.Text = "Dashboard"
         Me.TabPageDashboard.UseVisualStyleBackColor = True
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(678, 87)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox3.TabIndex = 24
+        Me.TextBox3.Visible = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(995, 31)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(239, 29)
+        Me.Label2.TabIndex = 23
+        Me.Label2.Text = "Monthly Step Count"
+        '
+        'Chart1
+        '
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
+        Me.Chart1.Location = New System.Drawing.Point(962, 63)
+        Me.Chart1.Name = "Chart1"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Size = New System.Drawing.Size(395, 279)
+        Me.Chart1.TabIndex = 22
+        Me.Chart1.Text = "Chart1"
         '
         'Label32
         '
@@ -545,11 +583,13 @@ Partial Class MainForm
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Button2)
+        Me.TabPage1.Controls.Add(Me.Button1)
         Me.TabPage1.Controls.Add(Me.MonthCalendar3)
         Me.TabPage1.Controls.Add(Me.Button4)
-        Me.TabPage1.Controls.Add(Me.DataGridView3)
-        Me.TabPage1.Controls.Add(Me.DataGridView4)
-        Me.TabPage1.Controls.Add(Me.DataGridView5)
+        Me.TabPage1.Controls.Add(Me.breakfast)
+        Me.TabPage1.Controls.Add(Me.Dinner)
+        Me.TabPage1.Controls.Add(Me.Lunch)
         Me.TabPage1.Controls.Add(Me.DataGridViewAvailableBreakfast)
         Me.TabPage1.Controls.Add(Me.Label11)
         Me.TabPage1.Controls.Add(Me.Label10)
@@ -572,20 +612,20 @@ Partial Class MainForm
         '
         'MonthCalendar3
         '
-        Me.MonthCalendar3.Location = New System.Drawing.Point(1062, 88)
+        Me.MonthCalendar3.Location = New System.Drawing.Point(1138, 30)
         Me.MonthCalendar3.Name = "MonthCalendar3"
         Me.MonthCalendar3.TabIndex = 38
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(1078, 262)
+        Me.Button4.Location = New System.Drawing.Point(927, 161)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(201, 55)
         Me.Button4.TabIndex = 34
-        Me.Button4.Text = "Add A Meal"
+        Me.Button4.Text = "Save Breakfast"
         Me.Button4.UseVisualStyleBackColor = True
         '
-        'DataGridView3
+        'breakfast
         '
         DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control
@@ -594,8 +634,8 @@ Partial Class MainForm
         DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
-        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.breakfast.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
+        Me.breakfast.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -603,9 +643,9 @@ Partial Class MainForm
         DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView3.DefaultCellStyle = DataGridViewCellStyle17
-        Me.DataGridView3.Location = New System.Drawing.Point(523, 88)
-        Me.DataGridView3.Name = "DataGridView3"
+        Me.breakfast.DefaultCellStyle = DataGridViewCellStyle17
+        Me.breakfast.Location = New System.Drawing.Point(523, 88)
+        Me.breakfast.Name = "breakfast"
         DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -613,11 +653,11 @@ Partial Class MainForm
         DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView3.RowHeadersDefaultCellStyle = DataGridViewCellStyle18
-        Me.DataGridView3.Size = New System.Drawing.Size(384, 192)
-        Me.DataGridView3.TabIndex = 33
+        Me.breakfast.RowHeadersDefaultCellStyle = DataGridViewCellStyle18
+        Me.breakfast.Size = New System.Drawing.Size(384, 192)
+        Me.breakfast.TabIndex = 33
         '
-        'DataGridView4
+        'Dinner
         '
         DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control
@@ -626,8 +666,8 @@ Partial Class MainForm
         DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView4.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
-        Me.DataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Dinner.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
+        Me.Dinner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -635,9 +675,9 @@ Partial Class MainForm
         DataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView4.DefaultCellStyle = DataGridViewCellStyle20
-        Me.DataGridView4.Location = New System.Drawing.Point(523, 476)
-        Me.DataGridView4.Name = "DataGridView4"
+        Me.Dinner.DefaultCellStyle = DataGridViewCellStyle20
+        Me.Dinner.Location = New System.Drawing.Point(523, 476)
+        Me.Dinner.Name = "Dinner"
         DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -645,11 +685,11 @@ Partial Class MainForm
         DataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView4.RowHeadersDefaultCellStyle = DataGridViewCellStyle21
-        Me.DataGridView4.Size = New System.Drawing.Size(384, 205)
-        Me.DataGridView4.TabIndex = 32
+        Me.Dinner.RowHeadersDefaultCellStyle = DataGridViewCellStyle21
+        Me.Dinner.Size = New System.Drawing.Size(384, 205)
+        Me.Dinner.TabIndex = 32
         '
-        'DataGridView5
+        'Lunch
         '
         DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control
@@ -658,8 +698,8 @@ Partial Class MainForm
         DataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView5.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle22
-        Me.DataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Lunch.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle22
+        Me.Lunch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -667,9 +707,9 @@ Partial Class MainForm
         DataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView5.DefaultCellStyle = DataGridViewCellStyle23
-        Me.DataGridView5.Location = New System.Drawing.Point(523, 286)
-        Me.DataGridView5.Name = "DataGridView5"
+        Me.Lunch.DefaultCellStyle = DataGridViewCellStyle23
+        Me.Lunch.Location = New System.Drawing.Point(523, 286)
+        Me.Lunch.Name = "Lunch"
         DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -677,9 +717,9 @@ Partial Class MainForm
         DataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView5.RowHeadersDefaultCellStyle = DataGridViewCellStyle24
-        Me.DataGridView5.Size = New System.Drawing.Size(384, 184)
-        Me.DataGridView5.TabIndex = 31
+        Me.Lunch.RowHeadersDefaultCellStyle = DataGridViewCellStyle24
+        Me.Lunch.Size = New System.Drawing.Size(384, 184)
+        Me.Lunch.TabIndex = 31
         '
         'DataGridViewAvailableBreakfast
         '
@@ -1330,31 +1370,23 @@ Partial Class MainForm
         Me.WebBrowser1.TabIndex = 8
         Me.WebBrowser1.Url = New System.Uri("https://www.facebook.com/Xanadu-Heatlh-434256350353251", System.UriKind.Absolute)
         '
-        'Chart1
+        'Button1
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(962, 63)
-        Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(395, 279)
-        Me.Chart1.TabIndex = 22
-        Me.Chart1.Text = "Chart1"
+        Me.Button1.Location = New System.Drawing.Point(927, 358)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(201, 55)
+        Me.Button1.TabIndex = 39
+        Me.Button1.Text = "Save Lunch"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'Label2
+        'Button2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(995, 31)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(239, 29)
-        Me.Label2.TabIndex = 23
-        Me.Label2.Text = "Monthly Step Count"
+        Me.Button2.Location = New System.Drawing.Point(927, 551)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(201, 55)
+        Me.Button2.TabIndex = 40
+        Me.Button2.Text = "Save Lunch"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'MainForm
         '
@@ -1365,10 +1397,12 @@ Partial Class MainForm
         Me.Controls.Add(Me.TabControlHomepage)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "MainForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Home Page"
         Me.TabControlHomepage.ResumeLayout(False)
         Me.TabPageDashboard.ResumeLayout(False)
         Me.TabPageDashboard.PerformLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewEventRegister, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewDinnerDashboard, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewLunchDashboard, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1379,9 +1413,9 @@ Partial Class MainForm
         CType(Me.DataGridViewEvents, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.breakfast, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Dinner, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Lunch, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewAvailableBreakfast, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewAvailableDinner, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewAvailableLunch, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1397,7 +1431,6 @@ Partial Class MainForm
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1452,9 +1485,9 @@ Partial Class MainForm
     Friend WithEvents ButtonLast30Days As Button
     Friend WithEvents Label35 As Label
     Friend WithEvents DataGridViewSteps As DataGridView
-    Friend WithEvents DataGridView3 As DataGridView
-    Friend WithEvents DataGridView4 As DataGridView
-    Friend WithEvents DataGridView5 As DataGridView
+    Friend WithEvents breakfast As DataGridView
+    Friend WithEvents Dinner As DataGridView
+    Friend WithEvents Lunch As DataGridView
     Friend WithEvents DataGridViewAvailableBreakfast As DataGridView
     Friend WithEvents Label5 As Label
     Friend WithEvents DataGridViewSleepStats As DataGridView
@@ -1484,4 +1517,7 @@ Partial Class MainForm
     Friend WithEvents Label12 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button1 As Button
 End Class

@@ -25,7 +25,7 @@
                     db.bind("@EventDescription", TextBoxEventDescription.Text)
                     db.execute()
                     MsgBox("Action Completed", vbOK)
-                    db.sql = "SELECT Event_ID, Event_Name, Event_Date, Event_Location FROM [Events]"
+                    db.sql = "declare @yesterday datetime declare @now datetime set @now = getdate() set @yesterday = dateadd(day,-1,@now) SELECT Event_ID, Event_Name, Event_Date, Event_Location FROM [Events] where event_date >=@yesterday order by event_date "
                     db.fill(MainForm.DataGridViewEvents)
                     Me.Dispose()
                 Case MsgBoxResult.No

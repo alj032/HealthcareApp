@@ -1,19 +1,15 @@
-﻿Imports System.Data
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 Imports System.Windows.Forms.DataVisualization.Charting
-
 Public Class MainForm
-
     ''Calling the database
     Protected db As New db
     Public UserID
     Public Username As String
     Public EventID = 0
-
-
+    Dim selecteddate As Int32
 
     ''When the form loads
-    Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ''Getting the value of the user ID so we can use it for queries in this form.
         UserID = LoginScreen.UserID
         Username = LoginScreen.Username
@@ -21,16 +17,12 @@ Public Class MainForm
         ''Changing the label text to show their username and a friendly message
         LabelWelcome.Text = "Hello " & Username & "! Stay healthy!"
 
-
         ''Setting to full row selection mode
         DataGridViewAvailableBreakfast.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataGridViewAvailableLunch.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataGridViewAvailableDinner.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataGridViewSteps.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataGridViewEvents.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-
-
-        ''Filling Datagridviews
 
 
         ''Filling breakfast datagridview
@@ -50,11 +42,11 @@ Public Class MainForm
         db.fill(DataGridViewSteps)
 
         ''Filling Events DataGridView
-        db.sql = "SELECT Event_ID, Event_Name, Event_Date, Event_Location FROM [Events]"
+        db.sql = "declare @yesterday datetime declare @now datetime set @now = getdate() set @yesterday = dateadd(day,-1,@now) SELECT Event_ID, Event_Name, Event_Date, Event_Location FROM [Events] where event_date >=@yesterday order by event_date "
         db.fill(DataGridViewEvents)
 
         ''Filling EventRegistration DataGridView
-        db.sql = "Select Event_Name, Event_Location, Event_Date, Event_Description From [Events] Join EventRegistration ER ON Events.Event_ID = ER.EventId Where UserID = @userid"
+        db.sql = "declare @yesterday datetime declare @now datetime set @now = getdate() set @yesterday = dateadd(day,-1,@now) Select Event_Name, Event_Location, Event_Date, Event_Description From [Events] Join EventRegistration ER ON Events.Event_ID = ER.EventId Where UserID = @userid and [EVENT_DATE] >=@yesterday order by Event_Date"
         db.bind("@userid", UserID)
         db.fill(DataGridViewEventRegister)
 
@@ -62,16 +54,12 @@ Public Class MainForm
         db.sql = "SELECT [Start],[Time in Bed] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
         db.fill(DataGridViewSleepStats)
 
-
-
-
         ''Dashboard GRAHPS
         ''Sleep Graph
         ''Graph
         Dim connection As New SqlConnection With {.ConnectionString = "Server=essql1.walton.uark.edu;Database=Xanadu;Trusted_Connection=yes;"}
         'prepare a query
         Dim command As New SqlCommand With {.Connection = connection}
-
 
         Dim sqlSleepAll As String = "SELECT Top 30 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
 
@@ -89,7 +77,7 @@ Public Class MainForm
         legend1.Name = "Legend"
         chartStepDashboard.Legends.Add(legend1)
         chartStepDashboard.Location = New System.Drawing.Point(962, 63)
-        chartStepDashboard.Name = "Hours_of_Sleep"
+        chartStepDashboard.Name = "Steps"
         chartStepDashboard.Titles.Add("Number of Steps for 30 Records")
         series1.ChartArea = "ChartArea"
         series1.Legend = "Legend"
@@ -103,18 +91,14 @@ Public Class MainForm
         chartStepDashboard.ChartAreas(0).AxisX.Title = "Day"
         chartStepDashboard.ChartAreas(0).AxisY.Title = "Number of Steps"
 
-
-
         chartStepDashboard.DataSource = dataset.Tables("Steps30Dash")
         chartStepDashboard.BringToFront()
-
 
         ''Sleep Graph
         ''Graph
         Dim connection1 As New SqlConnection With {.ConnectionString = "Server=essql1.walton.uark.edu;Database=Xanadu;Trusted_Connection=yes;"}
         'prepare a query
         Dim command1 As New SqlCommand With {.Connection = connection1}
-
 
         Dim sqlSleepAll1 As String = "SELECT Top 30 [Start],[Sleep Quality] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
 
@@ -146,13 +130,8 @@ Public Class MainForm
         chartSleepDashboard.ChartAreas(0).AxisX.Title = "Day"
         chartSleepDashboard.ChartAreas(0).AxisY.Title = "Sleep Quality (0-100)"
 
-
-
         chartSleepDashboard.DataSource = dataset1.Tables("Sleep30Dash")
         chartSleepDashboard.BringToFront()
-
-
-
     End Sub
 
     ''When a user clicks the last day buttons we select the top row from their steps and display it in the datagridview
@@ -217,7 +196,7 @@ Public Class MainForm
             db.bind("@EventID", EventID)
             db.execute()
             MsgBox("Sucessfully registered for event!", MsgBoxStyle.OkOnly)
-            db.sql = "Select Event_Name, Event_Location, Event_Date, Event_Description From [Events] Join EventRegistration ER ON Events.Event_ID = ER.EventId Where UserID = @userid"
+            db.sql = "declare @yesterday datetime declare @now datetime set @now = getdate() set @yesterday = dateadd(day,-1,@now) Select Event_Name, Event_Location, Event_Date, Event_Description From [Events] Join EventRegistration ER ON Events.Event_ID = ER.EventId Where UserID = @userid and [EVENT_DATE] >=@yesterday order by Event_Date"
             db.bind("@userid", UserID)
             db.fill(DataGridViewEventRegister)
         End If
@@ -235,14 +214,12 @@ Public Class MainForm
             Steps = Convert.ToInt32(TextBoxActualSteps.Text)
             TextBoxActualCalories.Text = Steps \ 20
             TextBoxActualDistance.Text = (Steps * 2.5) / (5280)
-
-
+            
             db.sql = "Select targetsteps from Credentials Where UserID = @UserID"
             db.bind("@UserID", UserID)
             db.fill(DataGridViewTargetSteps)
 
             DataGridViewTargetSteps.Rows(0).Selected = True
-
 
             TextBoxTargetSteps.Text = DataGridViewTargetSteps.SelectedRows(0).Cells(0).Value
             TargetSteps = Convert.ToInt32(TextBoxTargetSteps.Text)
@@ -255,24 +232,11 @@ Public Class MainForm
         ''Filling datagrid view witht the most recent record
         db.sql = "SELECT Top 1 [Start], [Time in bed] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
         db.fill(DataGridViewSleepStats)
-
-
-
-
-
-
-
-
-
-
     End Sub
 
     Private Sub ButtonLast30_Click(sender As Object, e As EventArgs) Handles ButtonLast30.Click
         db.sql = "SELECT Top 30 [Start], [Time in bed] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
         db.fill(DataGridViewSleepStats)
-
-
-
     End Sub
 
     Private Sub ButtonAllRecords_Click(sender As Object, e As EventArgs) Handles ButtonAllRecords.Click
@@ -294,4 +258,12 @@ Public Class MainForm
         ''Show Graph
         SleepStatsAll.ShowDialog()
     End Sub
+
+
+    'Private Sub MonthCalendar2_DateChanged(sender As Object, e As DateRangeEventArgs) Handles MonthCalendar2.DateChanged
+    '    'sunday = 0 Monday = 1 Tuesday = 2 Wednesday = 3 Thursday = 4 Friday = 5 Saturday = 6 
+    '    selecteddate = MonthCalendar2.SelectionStart.DayOfWeek
+    '    TextBox3.Text = MonthCalendar2.SelectionRange.Start.ToShortDateString()
+    '    db.sql = ""
+    'End Sub
 End Class
