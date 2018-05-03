@@ -54,84 +54,6 @@ Public Class MainForm
         db.sql = "SELECT [Start],[Time in Bed] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
         db.fill(DataGridViewSleepStats)
 
-        ''Dashboard GRAHPS
-        ''Sleep Graph
-        ''Graph
-        Dim connection As New SqlConnection With {.ConnectionString = "Server=essql1.walton.uark.edu;Database=Xanadu;Trusted_Connection=yes;"}
-        'prepare a query
-        Dim command As New SqlCommand With {.Connection = connection}
-
-        Dim sqlSleepAll As String = "SELECT Top 30 [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
-
-        Dim adapter As New SqlDataAdapter(sqlSleepAll, connection)
-        Dim dataset As New DataSet()
-        adapter.Fill(dataset, "Steps30Dash")
-
-        Dim chartarea1 As ChartArea = New ChartArea()
-        Dim legend1 As Legend = New Legend()
-        Dim series1 As Series = New Series()
-        Dim chartStepDashboard = New Chart()
-        Me.Controls.Add(chartStepDashboard)
-        chartarea1.Name = "ChartArea"
-        chartStepDashboard.ChartAreas.Add(chartarea1)
-        legend1.Name = "Legend"
-        chartStepDashboard.Legends.Add(legend1)
-        chartStepDashboard.Location = New System.Drawing.Point(962, 63)
-        chartStepDashboard.Name = "Steps"
-        chartStepDashboard.Titles.Add("Number of Steps for 30 Records")
-        series1.ChartArea = "ChartArea"
-        series1.Legend = "Legend"
-        series1.Name = "series1"
-        chartStepDashboard.Series.Add(series1)
-        chartStepDashboard.Size = New System.Drawing.Size(395, 279)
-        chartStepDashboard.TabIndex = 0
-        chartStepDashboard.Text = "chart1"
-        chartStepDashboard.Series("series1").XValueMember = "Start"
-        chartStepDashboard.Series("series1").YValueMembers = "Activity (steps)"
-        chartStepDashboard.ChartAreas(0).AxisX.Title = "Day"
-        chartStepDashboard.ChartAreas(0).AxisY.Title = "Number of Steps"
-
-        chartStepDashboard.DataSource = dataset.Tables("Steps30Dash")
-        chartStepDashboard.BringToFront()
-
-        ''Sleep Graph
-        ''Graph
-        Dim connection1 As New SqlConnection With {.ConnectionString = "Server=essql1.walton.uark.edu;Database=Xanadu;Trusted_Connection=yes;"}
-        'prepare a query
-        Dim command1 As New SqlCommand With {.Connection = connection1}
-
-        Dim sqlSleepAll1 As String = "SELECT Top 30 [Start],[Sleep Quality] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
-
-        Dim adapter1 As New SqlDataAdapter(sqlSleepAll1, connection1)
-        Dim dataset1 As New DataSet()
-        adapter1.Fill(dataset1, "Sleep30Dash")
-
-        Dim chartarea11 As ChartArea = New ChartArea()
-        Dim legend11 As Legend = New Legend()
-        Dim series11 As Series = New Series()
-        Dim chartSleepDashboard = New Chart()
-        Me.Controls.Add(chartSleepDashboard)
-        chartarea11.Name = "ChartArea"
-        chartSleepDashboard.ChartAreas.Add(chartarea11)
-        legend11.Name = "Legend"
-        chartSleepDashboard.Legends.Add(legend11)
-        chartSleepDashboard.Location = New System.Drawing.Point(962, 409)
-        chartSleepDashboard.Name = "Hours_of_Sleep"
-        chartSleepDashboard.Titles.Add("Quality of Sleep for 30 Records")
-        series11.ChartArea = "ChartArea"
-        series11.Legend = "Legend"
-        series11.Name = "series1"
-        chartSleepDashboard.Series.Add(series11)
-        chartSleepDashboard.Size = New System.Drawing.Size(395, 279)
-        chartSleepDashboard.TabIndex = 0
-        chartSleepDashboard.Text = "chart1"
-        chartSleepDashboard.Series("series1").XValueMember = "Start"
-        chartSleepDashboard.Series("series1").YValueMembers = "Sleep Quality"
-        chartSleepDashboard.ChartAreas(0).AxisX.Title = "Day"
-        chartSleepDashboard.ChartAreas(0).AxisY.Title = "Sleep Quality (0-100)"
-
-        chartSleepDashboard.DataSource = dataset1.Tables("Sleep30Dash")
-        chartSleepDashboard.BringToFront()
     End Sub
 
     ''When a user clicks the last day buttons we select the top row from their steps and display it in the datagridview
@@ -151,7 +73,7 @@ Public Class MainForm
     End Sub
 
     Private Sub ButtonLast30StepsGraph_Click(sender As Object, e As EventArgs) Handles ButtonLast30StepsGraph.Click
-        ''Open sleep graph for last 30 days
+        ''Open Steps graph for last 30 days
         SleepStats30Days.ShowDialog()
     End Sub
 
@@ -257,6 +179,17 @@ Public Class MainForm
     Private Sub ButtonSleepAllRecord_Click(sender As Object, e As EventArgs) Handles ButtonSleepAllRecord.Click
         ''Show Graph
         SleepStatsAll.ShowDialog()
+    End Sub
+
+    Private Sub ButtonDashboardSteps_Click(sender As Object, e As EventArgs) Handles ButtonDashboardSteps.Click
+        ''Open Steps graph for last 30 days
+        SleepStats30Days.ShowDialog()
+
+    End Sub
+
+    Private Sub ButtonDashboardSleep_Click(sender As Object, e As EventArgs) Handles ButtonDashboardSleep.Click
+        ''Show Graph
+        SleepStats30.ShowDialog()
     End Sub
 
 
