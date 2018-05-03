@@ -81,6 +81,12 @@
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="db.vb" />
+    <Compile Include="Meal.Designer.vb">
+      <DependentUpon>Meal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Meal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SleepStats30.Designer.vb">
       <DependentUpon>SleepStats30.vb</DependentUpon>
     </Compile>
@@ -160,6 +166,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AddEvent.resx">
       <DependentUpon>AddEvent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Meal.resx">
+      <DependentUpon>Meal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SleepStats30.resx">
       <DependentUpon>SleepStats30.vb</DependentUpon>

@@ -33,6 +33,7 @@ Partial Class LoginScreen
         '
         'ButtonLogin
         '
+        Me.ButtonLogin.Font = New System.Drawing.Font("Times New Roman", 12.75!)
         Me.ButtonLogin.Location = New System.Drawing.Point(12, 147)
         Me.ButtonLogin.Name = "ButtonLogin"
         Me.ButtonLogin.Size = New System.Drawing.Size(178, 57)
@@ -42,14 +43,14 @@ Partial Class LoginScreen
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 35)
+        Me.TextBox1.Location = New System.Drawing.Point(12, 40)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(178, 20)
         Me.TextBox1.TabIndex = 1
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(12, 97)
+        Me.TextBox2.Location = New System.Drawing.Point(12, 102)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(178, 20)
         Me.TextBox2.TabIndex = 2
@@ -57,23 +58,26 @@ Partial Class LoginScreen
         'LabelUsername
         '
         Me.LabelUsername.AutoSize = True
-        Me.LabelUsername.Location = New System.Drawing.Point(79, 9)
+        Me.LabelUsername.Font = New System.Drawing.Font("Times New Roman", 12.75!)
+        Me.LabelUsername.Location = New System.Drawing.Point(61, 12)
         Me.LabelUsername.Name = "LabelUsername"
-        Me.LabelUsername.Size = New System.Drawing.Size(55, 13)
+        Me.LabelUsername.Size = New System.Drawing.Size(78, 19)
         Me.LabelUsername.TabIndex = 3
         Me.LabelUsername.Text = "Username"
         '
         'LabelPassword
         '
         Me.LabelPassword.AutoSize = True
-        Me.LabelPassword.Location = New System.Drawing.Point(79, 70)
+        Me.LabelPassword.Font = New System.Drawing.Font("Times New Roman", 12.75!)
+        Me.LabelPassword.Location = New System.Drawing.Point(61, 73)
         Me.LabelPassword.Name = "LabelPassword"
-        Me.LabelPassword.Size = New System.Drawing.Size(53, 13)
+        Me.LabelPassword.Size = New System.Drawing.Size(74, 19)
         Me.LabelPassword.TabIndex = 4
         Me.LabelPassword.Text = "Password"
         '
         'ButtonSignUp
         '
+        Me.ButtonSignUp.Font = New System.Drawing.Font("Times New Roman", 12.75!)
         Me.ButtonSignUp.Location = New System.Drawing.Point(12, 210)
         Me.ButtonSignUp.Name = "ButtonSignUp"
         Me.ButtonSignUp.Size = New System.Drawing.Size(178, 57)
@@ -86,6 +90,7 @@ Partial Class LoginScreen
         Me.AcceptButton = Me.ButtonLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.ClientSize = New System.Drawing.Size(206, 277)
         Me.Controls.Add(Me.ButtonSignUp)
         Me.Controls.Add(Me.LabelPassword)

@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Windows.Forms.DataVisualization.Charting
 Public Class MainForm
     ''Calling the database
     Protected db As New db
@@ -26,16 +25,18 @@ Public Class MainForm
 
 
         ''Filling breakfast datagridview
-        db.sql = "Select * from Meals where [Type of Meal] = 'Breakfast'"
+        db.sql = "Select * from Meals where typeofmeal = 'Breakfast'"
         db.fill(DataGridViewAvailableBreakfast)
 
+
         ''filling lunch datagrid view
-        db.sql = "Select * from Meals where [Type of Meal] = 'Lunch'"
+        db.sql = "Select * from Meals where typeofmeal = 'Lunch'"
         db.fill(DataGridViewAvailableLunch)
 
         ''filling dinner datagridview
-        db.sql = "Select * from Meals where [Type of Meal] = 'Dinner'"
+        db.sql = "Select * from Meals where typeofmeal = 'Dinner'"
         db.fill(DataGridViewAvailableDinner)
+
 
         ''Filling Steps datagridview
         db.sql = "SELECT [Start],[Activity (steps)] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
@@ -128,28 +129,52 @@ Public Class MainForm
         ''If a cell is clicked 
         If (DataGridViewSteps.SelectedRows.Count > 0) Then ''make Then sure user Select at least 1 row 
             ''Declare steps
-            Dim Steps As Int32
-            Dim TargetSteps As Int32
+            Dim Steps As Int64
+            Dim TargetSteps As Int64
 
             ''Setting variable = to the value in the datagrid view
             TextBoxActualSteps.Text = DataGridViewSteps.SelectedRows(0).Cells(1).Value
             Steps = Convert.ToInt32(TextBoxActualSteps.Text)
             TextBoxActualCalories.Text = Steps \ 20
             TextBoxActualDistance.Text = (Steps * 2.5) / (5280)
-            
+
             db.sql = "Select targetsteps from Credentials Where UserID = @UserID"
             db.bind("@UserID", UserID)
             db.fill(DataGridViewTargetSteps)
 
             DataGridViewTargetSteps.Rows(0).Selected = True
 
-            TextBoxTargetSteps.Text = DataGridViewTargetSteps.SelectedRows(0).Cells(0).Value
-            TargetSteps = Convert.ToInt32(TextBoxTargetSteps.Text)
-            TextBoxTargetCalories.Text = TargetSteps \ 20
-            TextBoxTargetDistance.Text = (TargetSteps * 2.5) / (5280)
+            Me.TargetSteps.Text = DataGridViewTargetSteps.SelectedRows(0).Cells(0).Value
+            TargetSteps = Convert.ToInt64(Me.TargetSteps.Text)
+            Dim save As Decimal
+            save = (TargetSteps * 2.5) / (5280)
+            targetdistance.Text = save.ToString("#.00") + " miles"
+
         End If
     End Sub
 
+    Private Sub TargetSteps_TextChanged(sender As Object, e As EventArgs) Handles TargetSteps.TextChanged 'updates target calories and target distance based on user input
+
+        If TargetSteps.Text.Trim.Length > 0 Then
+            Dim TargetSteps As Int64
+            Dim save As Decimal
+            TargetSteps = Convert.ToInt64(Me.TargetSteps.Text)
+            TargetCalories.Text = TargetSteps \ 20
+            Save = (TargetSteps * 2.5) / (5280)
+            targetdistance.Text = save.ToString("#.00") + " miles"
+        End If
+
+    End Sub
+    Private Sub TargetSteps_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TargetSteps.KeyPress 'restricts to numeric 
+        '97 - 122 = Ascii codes for simple letters
+        '65 - 90  = Ascii codes for capital letters
+        '48 - 57  = Ascii codes for numbers
+        If Asc(e.KeyChar) <> 8 Then
+            If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
+                e.Handled = True
+            End If
+        End If
+    End Sub
     Private Sub ButtonLastSleepDay_Click(sender As Object, e As EventArgs) Handles ButtonLastSleepDay.Click
         ''Filling datagrid view witht the most recent record
         db.sql = "SELECT Top 1 [Start], [Time in bed] FROM [Xanadu].[dbo].[sleepdata] Order by [Start] Desc"
@@ -192,11 +217,112 @@ Public Class MainForm
         SleepStats30.ShowDialog()
     End Sub
 
+    Private Sub mealbutton_Click(sender As Object, e As EventArgs) Handles mealbutton.Click
+        Meal.Show()
+    End Sub
 
-    'Private Sub MonthCalendar2_DateChanged(sender As Object, e As DateRangeEventArgs) Handles MonthCalendar2.DateChanged
-    '    'sunday = 0 Monday = 1 Tuesday = 2 Wednesday = 3 Thursday = 4 Friday = 5 Saturday = 6 
-    '    selecteddate = MonthCalendar2.SelectionStart.DayOfWeek
-    '    TextBox3.Text = MonthCalendar2.SelectionRange.Start.ToShortDateString()
-    '    db.sql = ""
-    'End Sub
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        selecteddate = MonthCalendar3.SelectionStart.DayOfWeek
+        If DataGridViewAvailableBreakfast.SelectedRows.Count < 0 Then
+            MsgBox("Please select a meal!", MsgBoxStyle.OkOnly) 'checks for nulls
+            Exit Sub
+        ElseIf bb5.Text = String.Empty Then
+            MsgBox("Please select a date!", MsgBoxStyle.OkOnly) 'checks for nulls
+            Exit Sub
+        Else
+            bb1.Text = DataGridViewAvailableBreakfast.SelectedRows(0).Cells(0).Value.ToString()
+            bb2.Text = DataGridViewAvailableBreakfast.SelectedRows(0).Cells(1).Value.ToString()
+            bb3.Text = DataGridViewAvailableBreakfast.SelectedRows(0).Cells(2).Value.ToString()
+            bb4.Text = DataGridViewAvailableBreakfast.SelectedRows(0).Cells(3).Value.ToString()
+
+            db.sql = "insert into usermeals (MealID, UserID, date, typeofmeal, ingredients, instructions) values (@MealID, @UserID, @date, @typeofmeal, @ingredients, @instructions)"
+            db.bind("@MealID", bb1.Text)
+            db.bind("@UserID", UserID)
+            db.bind("@date", bb5.Text)
+            db.bind("@typeofmeal", bb2.Text)
+            db.bind("@ingredients", bb3.Text)
+            db.bind("@instructions", bb4.Text)
+            db.execute()
+            MsgBox("Your meal has been saved!", vbOKOnly)
+            bb1.Text = ""
+            bb2.Text = ""
+            bb3.Text = ""
+            bb4.Text = ""
+            bb5.Text = ""
+        End If
+    End Sub
+
+    Private Sub MonthCalendar3_DateChanged(sender As Object, e As DateRangeEventArgs) Handles MonthCalendar3.DateChanged
+        selecteddate = MonthCalendar3.SelectionStart.DayOfWeek
+        bb5.Text = MonthCalendar3.SelectionRange.Start.ToShortDateString()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If DataGridViewAvailableDinner.SelectedRows.Count < 0 Then
+            MsgBox("Please select a meal!", MsgBoxStyle.OkOnly) 'checks for nulls
+            Exit Sub
+        ElseIf bb5.Text = String.Empty Then
+            MsgBox("Please select a date!", MsgBoxStyle.OkOnly) 'checks for nulls
+            Exit Sub
+        Else
+            bb1.Text = DataGridViewAvailableDinner.SelectedRows(0).Cells(0).Value.ToString()
+            bb2.Text = DataGridViewAvailableDinner.SelectedRows(0).Cells(1).Value.ToString()
+            bb3.Text = DataGridViewAvailableDinner.SelectedRows(0).Cells(2).Value.ToString()
+            bb4.Text = DataGridViewAvailableDinner.SelectedRows(0).Cells(3).Value.ToString()
+
+            db.sql = "insert into usermeals (MealID, UserID, date, typeofmeal, ingredients, instructions) values (@MealID, @UserID, @date, @typeofmeal, @ingredients, @instructions)"
+            db.bind("@MealID", bb1.Text)
+            db.bind("@UserID", UserID)
+            db.bind("@date", bb5.Text)
+            db.bind("@typeofmeal", bb2.Text)
+            db.bind("@ingredients", bb3.Text)
+            db.bind("@instructions", bb4.Text)
+            db.execute()
+            MsgBox("Your meal has been saved!", vbOKOnly)
+            bb1.Text = ""
+            bb2.Text = ""
+            bb3.Text = ""
+            bb4.Text = ""
+            bb5.Text = ""
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If DataGridViewAvailableLunch.SelectedRows.Count < 0 Then
+            MsgBox("Please select a meal!", MsgBoxStyle.OkOnly) 'checks for nulls
+            Exit Sub
+        ElseIf bb5.Text = String.Empty Then
+            MsgBox("Please select a date!", MsgBoxStyle.OkOnly) 'checks for nulls
+            Exit Sub
+        Else
+            bb1.Text = DataGridViewAvailableLunch.SelectedRows(0).Cells(0).Value.ToString()
+            bb2.Text = DataGridViewAvailableLunch.SelectedRows(0).Cells(1).Value.ToString()
+            bb3.Text = DataGridViewAvailableLunch.SelectedRows(0).Cells(2).Value.ToString()
+            bb4.Text = DataGridViewAvailableLunch.SelectedRows(0).Cells(3).Value.ToString()
+
+            db.sql = "insert into usermeals (MealID, UserID, date, typeofmeal, ingredients, instructions) values (@MealID, @UserID, @date, @typeofmeal, @ingredients, @instructions)"
+            db.bind("@MealID", bb1.Text)
+            db.bind("@UserID", UserID)
+            db.bind("@date", bb5.Text)
+            db.bind("@typeofmeal", bb2.Text)
+            db.bind("@ingredients", bb3.Text)
+            db.bind("@instructions", bb4.Text)
+            db.execute()
+            MsgBox("Your meal has been saved!", vbOKOnly)
+            bb1.Text = ""
+            bb2.Text = ""
+            bb3.Text = ""
+            bb4.Text = ""
+            bb5.Text = ""
+        End If
+    End Sub
+    Private Sub MonthCalendar2_DateChanged(sender As Object, e As DateRangeEventArgs) Handles MonthCalendar2.DateChanged
+        selecteddate = MonthCalendar2.SelectionStart.DayOfWeek
+        bb6.Text = MonthCalendar2.SelectionRange.Start.ToShortDateString()
+        Dim fromDt As Date = bb6.Text
+        Dim fdt = fromDt.ToString("yyyy-MM-dd")
+        bb6.Text = fdt
+        db.sql = "select typeofmeal as [Meal Time], Ingredients as [Ingredients Used] from usermeals where userid like'%" & UserID & "%'and date like'%" & bb6.Text & "%' order by case when typeofmeal = 'breakfast' then '1' when typeofmeal = 'lunch' then '2' else typeofmeal end asc"
+        db.fill(DataGridViewBreakfastDashboard)
+    End Sub
 End Class
